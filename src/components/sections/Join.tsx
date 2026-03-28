@@ -7,7 +7,7 @@ const Join = () => {
       id="join" 
       bgImage={joinData.assets.bg} 
       actorImage={joinData.assets.actor}
-      loading="lazy"
+      loading="eager"
     >
       <div className="gta-overlay">
         <div className="gta-column-left">
