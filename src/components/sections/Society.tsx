@@ -7,6 +7,7 @@ const Society = () => {
       id="society" 
       bgImage={societyData.assets.bg} 
       actorImage={societyData.assets.actor}
+      loading="lazy"
     >
       <div className="gta-overlay">
         <div className="gta-column-left">

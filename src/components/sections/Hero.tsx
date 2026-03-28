@@ -4,9 +4,10 @@ import heroData from '../../data/hero.json'
 const Hero = () => {
   return (
     <GTASection 
-      id="top" 
+      id="hero" 
       bgImage={heroData.assets.bg} 
       actorImage={heroData.assets.actor}
+      loading="eager"
     >
       <div className="gta-overlay">
         <div className="gta-column-left reveal-hero">

@@ -7,6 +7,7 @@ const Manifesto = () => {
       id="about" 
       bgImage={manifestData.assets.bg} 
       actorImage={manifestData.assets.actor}
+      loading="eager"
     >
       <div className="gta-overlay">
         <div className="gta-column-left">

@@ -1,132 +1,96 @@
-import { useRef, useState } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { useEffect, useState, useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { getAssetManifest, preloadImage } from '../utils/assetLoader'
 
 interface LoadingScreenProps {
-  onComplete: () => void;
+  onComplete: () => void
 }
 
-export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLImageElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const progressLineRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
+  const [progress, setProgress] = useState(0)
+  const [assetsLoaded, setAssetsLoaded] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const logoRef = useRef<HTMLDivElement>(null)
+  const progressLineRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const assets = getAssetManifest()
+    let loadedCount = 0
+
+    const loadAssets = async () => {
+      if (assets.length === 0) {
+        setAssetsLoaded(true)
+        setProgress(100)
+        return
+      }
+
+      for (const asset of assets) {
+        await preloadImage(asset)
+        loadedCount++
+        setProgress(Math.round((loadedCount / assets.length) * 100))
+      }
+      setAssetsLoaded(true)
+    }
+
+    loadAssets()
+  }, [])
 
   useGSAP(() => {
-    if (!containerRef.current) return;
+    // Initial siren loop
+    const sirenTl = gsap.timeline({ repeat: -1 })
+    sirenTl.to('.red-siren', { opacity: 0.1, duration: 0.1, yoyo: true, repeat: 1 })
+           .to('.blue-siren', { opacity: 0.1, duration: 0.1, yoyo: true, repeat: 1 }, "+=0.1")
 
-    const tl = gsap.timeline();
-
-    // Initial Appearance
-    tl.set('.loading-content', { opacity: 1 })
-      .from(logoRef.current, {
-        scale: 0.5,
-        opacity: 0,
-        duration: 1.5,
-        ease: 'expo.out'
+    // Exit animation when loaded
+    if (assetsLoaded) {
+      sirenTl.kill()
+      
+      const exitTl = gsap.timeline({
+        onComplete: () => onComplete()
       })
-      .from(textRef.current, {
-        y: 20,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-      }, "-=0.8")
-      .from('.progress-container', {
-        width: 0,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.inOut'
-      }, "-=0.5");
 
-    // Police Siren Animation
-    const sirenTl = gsap.timeline({ repeat: -1 });
-    sirenTl.to('.siren-red', { opacity: 0.4, duration: 0.05 }) // Increased from 0.15
-           .to('.siren-red', { opacity: 0, duration: 0.05 })
-           .to('.siren-red', { opacity: 0.4, duration: 0.05 })
-           .to('.siren-red', { opacity: 0, duration: 0.5 })
-           .to('.siren-blue', { opacity: 0.4, duration: 0.05 }) // Increased from 0.15
-           .to('.siren-blue', { opacity: 0, duration: 0.05 })
-           .to('.siren-blue', { opacity: 0.4, duration: 0.05 })
-           .to('.siren-blue', { opacity: 0, duration: 0.5 });
+      exitTl.to('.progress-container', { opacity: 0, duration: 0.3 })
+            .to(logoRef.current, {
+              filter: 'drop-shadow(0 0 30px rgba(230, 34, 34, 1))',
+              duration: 0.5
+            })
+            .to(logoRef.current, {
+              scale: 200,
+              duration: 1.5,
+              ease: 'expo.in'
+            })
+            .to(containerRef.current, {
+              opacity: 0,
+              duration: 0.5
+            }, "-=0.2")
+    }
 
-    // Progress Simulation
-    const progressObj = { value: 0 };
-    gsap.to(progressObj, {
-      value: 100,
-      duration: 3, 
-      delay: 0.2,
-      ease: "power1.inOut",
-      onUpdate: () => setProgress(Math.floor(progressObj.value)),
-      onComplete: () => {
-        // Stop sirens immediately
-        sirenTl.kill();
-
-        // The cinematic transition
-        const exitTl = gsap.timeline({
-          onComplete: () => {
-            onComplete();
-          }
-        });
-
-        // Instant background blackout
-        exitTl.set(containerRef.current, { backgroundColor: '#000' })
-              .to('.sirens', { opacity: 0, duration: 0.1 }, 0);
-
-        exitTl.to([textRef.current, '.progress-container', '.progress-percentage'], {
-          opacity: 0,
-          scale: 0.8,
-          duration: 0.3,
-          ease: 'power2.in'
-        })
-        .to(logoRef.current, {
-          // Intense Red Filter
-          filter: 'brightness(0) invert(21%) sepia(100%) saturate(7413%) hue-rotate(359deg) brightness(94%) contrast(117%)',
-          duration: 0.2,
-          ease: 'power1.inOut'
-        })
-        .to(logoRef.current, {
-          scale: 200, // Massive zoom
-          duration: 1.2, 
-          ease: 'expo.in',
-          force3D: true,
-          transformOrigin: 'center center'
-        })
-        .to(containerRef.current, {
-          opacity: 0,
-          duration: 0.4
-        }, "-=0.2");
-      }
-    });
-
-    // Animate progress bar visual
+    // Smooth progress bar update
     gsap.to(progressLineRef.current, {
-      width: "100%",
-      duration: 3,
-      delay: 0.2,
-      ease: "power1.inOut"
-    });
-
-  }, { scope: containerRef });
+      width: `${progress}%`,
+      duration: 0.5,
+      ease: "power2.out"
+    })
+  }, { scope: containerRef, dependencies: [assetsLoaded, progress] })
 
   return (
     <div ref={containerRef} className="loading-screen">
-      <div className="sirens">
-        <div className="siren siren-red"></div>
-        <div className="siren siren-blue"></div>
-      </div>
+      <div className="siren-overlay red-siren" />
+      <div className="siren-overlay blue-siren" />
+      
       <div className="loading-content">
-        <div className="logo-wrapper">
-            <img ref={logoRef} src="/Logo/logo.svg" alt="Nexus Logo" className="loading-logo" />
-        </div>
-        <h2 ref={textRef} className="loading-text glusp">
-          Nexus City Roleplay
-        </h2>
+        <div ref={logoRef} className="loading-logo glusp">NEXUS CITY</div>
+        
         <div className="progress-container">
-          <div ref={progressLineRef} className="progress-line"></div>
+          <div className="progress-track">
+            <div ref={progressLineRef} className="progress-bar" />
+          </div>
+          <div className="progress-text clash">{progress}%</div>
         </div>
-        <div className="progress-percentage glusp">{progress}%</div>
       </div>
     </div>
-  );
+  )
 }
+
+export default LoadingScreen

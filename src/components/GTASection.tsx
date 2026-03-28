@@ -8,9 +8,10 @@ interface GTASectionProps {
   actorImage: string;
   id?: string;
   className?: string;
+  loading?: 'eager' | 'lazy';
 }
 
-export default function GTASection({ children, bgImage, actorImage, id, className }: GTASectionProps) {
+export default function GTASection({ children, bgImage, actorImage, id, className, loading = 'lazy' }: GTASectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const actorRef = useRef<HTMLImageElement>(null);
@@ -81,6 +82,7 @@ export default function GTASection({ children, bgImage, actorImage, id, classNam
         src={actorImage} 
         alt="Actor" 
         className="gta-actor" 
+        loading={loading}
       />
 
       {/* Overlay Content */}
