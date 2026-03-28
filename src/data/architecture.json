@@ -1,0 +1,19 @@
+{
+  "tag": "02 / ARCHITECTURE",
+  "cards": [
+    {
+      "tag": "CORE ENGINE",
+      "title": "High-Tickrate Core",
+      "desc": "Custom Lua back-end optimized for zero desync and buttery smooth physics."
+    },
+    {
+      "tag": "ECONOMY",
+      "title": "Player-Led Markets",
+      "desc": "Every commodity is tracked in a living, breathing financial ecosystem."
+    }
+  ],
+  "assets": {
+    "bg": "/Assets/AJ/BG-aj.png",
+    "actor": "/Assets/AJ/aj.png"
+  }
+}

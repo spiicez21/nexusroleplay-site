@@ -1,20 +1,21 @@
 import GTASection from '../GTASection'
+import joinData from '../../data/join.json'
 
 const Join = () => {
   return (
     <GTASection 
       id="join" 
-      bgImage="/Assets/RJ/BG-rj.png" 
-      actorImage="/Assets/RJ/rj.png"
+      bgImage={joinData.assets.bg} 
+      actorImage={joinData.assets.actor}
     >
       <div className="gta-overlay">
         <div className="gta-column-left">
           <section className="join">
             <div className="join-card fade-up">
-              <span className="section-tag glusp" style={{ marginBottom: '1rem' }}>04 / ONBOARDING</span>
-              <h3 className="glusp">INITIALIZE?</h3>
-              <p>Complete the validation protocol and join the elite roleplay community.</p>
-              <a href="#" className="btn btn-large">APPLY NOW</a>
+              <span className="section-tag glusp" style={{ marginBottom: '1rem' }}>{joinData.tag}</span>
+              <h3 className="glusp">{joinData.title}</h3>
+              <p>{joinData.text}</p>
+              <a href={joinData.action.href} className="btn btn-large">{joinData.action.label}</a>
             </div>
           </section>
         </div>

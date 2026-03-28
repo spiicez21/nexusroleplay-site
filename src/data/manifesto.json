@@ -1,0 +1,15 @@
+{
+  "tag": "01 / MANIFESTO",
+  "bgText": "VISION",
+  "status": "SYSTEM ALPHA ACTIVE",
+  "title": {
+    "white": "FORGE YOUR",
+    "red": "LEGACY",
+    "end": "HERE."
+  },
+  "text": "Nexus City is a high-performance environment built for pure storytelling and brutal consequence. No scripts. No noise. Only pure RP.",
+  "assets": {
+    "bg": "/Assets/KM/BG-km.png",
+    "actor": "/Assets/KM/km.png"
+  }
+}

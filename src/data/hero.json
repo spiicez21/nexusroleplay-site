@@ -1,0 +1,15 @@
+{
+  "title": {
+    "main": "NEXUS",
+    "outline": "CITY"
+  },
+  "subtitle": "A hyper-realistic roleplay ecosystem engineered for serious immersion. Experience a city that reacts to every decision you make.",
+  "actions": [
+    { "label": "ENTER CITY", "href": "#join", "primary": true },
+    { "label": "THE VISION", "href": "#about", "primary": false }
+  ],
+  "assets": {
+    "bg": "/Assets/VK/BG-vk.png",
+    "actor": "/Assets/VK/vk.png"
+  }
+}

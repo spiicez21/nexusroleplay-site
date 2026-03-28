@@ -1,0 +1,9 @@
+{
+  "tag": "// CINEMATIC GALLERY",
+  "items": [
+    { "img": "gallery_1.png", "tag": "DUSK", "title": "Downtown Vibe", "coord": "34.0522° N" },
+    { "img": "gallery_2.png", "tag": "GOLDEN", "title": "Skyline Overlook", "coord": "118.2437° W" },
+    { "img": "gallery_3.png", "tag": "GRIT", "title": "Alleyway Flow", "coord": "8.4412° S" },
+    { "img": "gallery_4.png", "tag": "ELITE", "title": "Modern Heights", "coord": "2.3119° E" }
+  ]
+}

@@ -1,32 +1,29 @@
 import GTASection from '../GTASection'
+import manifestData from '../../data/manifesto.json'
 
 const Manifesto = () => {
   return (
     <GTASection 
       id="about" 
-      bgImage="/Assets/KM/BG-km.png" 
-      actorImage="/Assets/KM/km.png"
+      bgImage={manifestData.assets.bg} 
+      actorImage={manifestData.assets.actor}
     >
       <div className="gta-overlay">
         <div className="gta-column-left">
-          <div className="manifesto-bg-text glusp">VISION</div>
+          <div className="manifesto-bg-text glusp">{manifestData.bgText}</div>
           <section className="manifesto">
             <div className="manifesto-header fade-up">
-              <span className="section-tag glusp">01 / MANIFESTO</span>
-              <div className="data-stamp">SYSTEM ALPHA ACTIVE</div>
+              <span className="section-tag glusp">{manifestData.tag}</span>
+              <div className="data-stamp">{manifestData.status}</div>
             </div>
             
             <h2 className="manifesto-title glusp fade-up">
-              FORGE YOUR<br/>
-              <span className="red">LEGACY</span> HERE.<br/> 
+              {manifestData.title.white}<br/>
+              <span className="red">{manifestData.title.red}</span> {manifestData.title.end}<br/> 
             </h2>
 
             <div className="manifesto-text-block fade-up">
-              <p>
-                Nexus City is a high-performance environment built for 
-                pure storytelling and brutal consequence. 
-                No scripts. No noise. Only pure RP.
-              </p>
+              <p>{manifestData.text}</p>
             </div>
           </section>
         </div>

@@ -1,15 +1,9 @@
-import { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import galleryData from '../../data/gallery.json'
 
 const Gallery = () => {
-  const [items] = useState([
-    { img: 'gallery_1.png', tag: 'DUSK', title: 'Downtown Vibe', coord: '34.0522° N' },
-    { img: 'gallery_2.png', tag: 'GOLDEN', title: 'Skyline Overlook', coord: '118.2437° W' },
-    { img: 'gallery_3.png', tag: 'GRIT', title: 'Alleyway Flow', coord: '8.4412° S' },
-    { img: 'gallery_4.png', tag: 'ELITE', title: 'Modern Heights', coord: '2.3119° E' }
-  ])
-
   const trackRef = useRef<HTMLDivElement>(null)
   const loopRef = useRef<gsap.core.Timeline | null>(null)
 
@@ -18,29 +12,26 @@ const Gallery = () => {
     if (!trackRef.current) return
 
     const track = trackRef.current
-    const itemsCount = items.length
     
-    // Create the loop
     loopRef.current = gsap.timeline({
       repeat: -1,
       defaults: { ease: "none" }
     })
 
     loopRef.current.to(track, {
-      xPercent: -50, // Move half the width (since we doubled items)
-      duration: 30, // Slow cinematic crawl
+      xPercent: -50,
+      duration: 30,
     })
   }, { scope: trackRef })
 
   const handleMouseEnter = () => {
-    gsap.to(loopRef.current, { timeScale: 0.2, duration: 1 }) // Slow down on hover
+    gsap.to(loopRef.current, { timeScale: 0.2, duration: 1 })
   }
 
   const handleMouseLeave = () => {
-    gsap.to(loopRef.current, { timeScale: 1, duration: 1 }) // Resume speed
+    gsap.to(loopRef.current, { timeScale: 1, duration: 1 })
   }
 
-  // Internal Parallax
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
@@ -65,7 +56,7 @@ const Gallery = () => {
   }
 
   // Double the items for seamless looping
-  const displayItems = [...items, ...items]
+  const displayItems = [...galleryData.items, ...galleryData.items]
 
   return (
     <section className="gallery-section">

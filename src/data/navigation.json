@@ -1,0 +1,12 @@
+{
+  "logo": {
+    "src": "/Logo/logo.svg",
+    "text": "NEXUS CITY"
+  },
+  "links": [
+    { "label": "Project", "href": "#about" },
+    { "label": "Systems", "href": "#systems" },
+    { "label": "Society", "href": "#society" },
+    { "label": "Initiate", "href": "#join", "highlight": true }
+  ]
+}

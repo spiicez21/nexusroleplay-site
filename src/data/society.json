@@ -1,0 +1,12 @@
+{
+  "tag": "03 / SOCIETY",
+  "factions": [
+    { "num": "01", "name": "L.S.P.D.", "desc": "Enforce order with military-grade tech and a full judicial back-end." },
+    { "num": "02", "name": "U.M.S.", "desc": "Critical response teams utilizing advanced medical triage systems." },
+    { "num": "03", "name": "Syndicates", "desc": "Organized hierarchies running weapon and narcotic logistics chains." }
+  ],
+  "assets": {
+    "bg": "/Assets/VJ/BG-vj.png",
+    "actor": "/Assets/VJ/vj.png"
+  }
+}
