@@ -8,11 +8,9 @@ interface LoadingScreenProps {
 }
 
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
-  const [progress, setProgress] = useState(0)
   const [assetsLoaded, setAssetsLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLDivElement>(null)
-  const progressLineRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const assets = getAssetManifest()
@@ -21,14 +19,12 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
     const loadAssets = async () => {
       if (assets.length === 0) {
         setAssetsLoaded(true)
-        setProgress(100)
         return
       }
 
       for (const asset of assets) {
         await preloadImage(asset)
         loadedCount++
-        setProgress(Math.round((loadedCount / assets.length) * 100))
       }
       setAssetsLoaded(true)
     }
@@ -39,40 +35,36 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   useGSAP(() => {
     // Initial siren loop
     const sirenTl = gsap.timeline({ repeat: -1 })
-    sirenTl.to('.red-siren', { opacity: 0.1, duration: 0.1, yoyo: true, repeat: 1 })
-           .to('.blue-siren', { opacity: 0.1, duration: 0.1, yoyo: true, repeat: 1 }, "+=0.1")
+    sirenTl.to('.red-siren', { opacity: 0.2, duration: 0.1, yoyo: true, repeat: 1 })
+           .to('.blue-siren', { opacity: 0.2, duration: 0.1, yoyo: true, repeat: 1 }, "+=0.1")
 
-    // Exit animation when loaded
+    // Hero Logo Entrance
+    gsap.fromTo(logoRef.current, 
+      { scale: 0.9, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.5, ease: "power4.out" }
+    )
+
+    // Exit animation when loaded (with intentional delay)
     if (assetsLoaded) {
       sirenTl.kill()
       
       const exitTl = gsap.timeline({
+        delay: 0.8, // Strategic delay for a smoother reveal after 100% load
         onComplete: () => onComplete()
       })
 
-      exitTl.to('.progress-container', { opacity: 0, duration: 0.3 })
-            .to(logoRef.current, {
-              filter: 'drop-shadow(0 0 30px rgba(230, 34, 34, 1))',
-              duration: 0.5
-            })
-            .to(logoRef.current, {
-              scale: 200,
+      exitTl.to(logoRef.current, {
+              scale: 100,
+              filter: 'brightness(3) blur(10px)',
               duration: 1.5,
-              ease: 'expo.in'
+              ease: 'power2.in'
             })
             .to(containerRef.current, {
               opacity: 0,
               duration: 0.5
             }, "-=0.2")
     }
-
-    // Smooth progress bar update
-    gsap.to(progressLineRef.current, {
-      width: `${progress}%`,
-      duration: 0.5,
-      ease: "power2.out"
-    })
-  }, { scope: containerRef, dependencies: [assetsLoaded, progress] })
+  }, { scope: containerRef, dependencies: [assetsLoaded] })
 
   return (
     <div ref={containerRef} className="loading-screen">
@@ -81,13 +73,6 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       
       <div className="loading-content">
         <div ref={logoRef} className="loading-logo glusp">NEXUS CITY</div>
-        
-        <div className="progress-container">
-          <div className="progress-track">
-            <div ref={progressLineRef} className="progress-bar" />
-          </div>
-          <div className="progress-text clash">{progress}%</div>
-        </div>
       </div>
     </div>
   )
