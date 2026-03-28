@@ -1,0 +1,19 @@
+{
+  "branding": {
+    "title": "NEXUS CITY",
+    "credit": "mode by @spicez21"
+  },
+  "socials": [
+    { "name": "GitHub", "url": "https://github.com/spiicez21", "id": "@spiicez21" },
+    { "name": "Discord", "url": "#", "id": "nexus.city" },
+    { "name": "Twitter", "url": "#", "id": "@NexusCityRP" },
+    { "name": "Instagram", "url": "#", "id": "@nexus.rp" }
+  ],
+  "links": [
+    { "label": "Status", "url": "#" },
+    { "label": "Store", "url": "#" },
+    { "label": "Rules", "url": "#" },
+    { "label": "Support", "url": "#" }
+  ],
+  "copyright": "© 2026 NEXUS CITY ROLEPLAY. ALL RIGHTS RESERVED."
+}
