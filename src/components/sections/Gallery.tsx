@@ -74,7 +74,7 @@ const Gallery = () => {
             onMouseLeave={handleItemMouseLeave}
           >
             <div className="gallery-img-wrapper">
-              <img src={`/Assets/Gallery/${item.img}`} alt={item.title} loading="lazy" />
+              <img src={`/Assets/Gallery/${item.img}`} alt={item.title} loading="eager" />
             </div>
             <div className="gallery-overlay-gradient" />
             <div className="gallery-label">

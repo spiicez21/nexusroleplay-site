@@ -7,7 +7,7 @@ const Architecture = () => {
       id="systems" 
       bgImage={archData.assets.bg} 
       actorImage={archData.assets.actor}
-      loading="lazy"
+      loading="eager"
     >
       <div className="gta-overlay">
         <div className="gta-column-left">
