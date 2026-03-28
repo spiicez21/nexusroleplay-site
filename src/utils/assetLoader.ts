@@ -25,7 +25,7 @@ export const getAssetManifest = () => {
   assets.push(architectureData.assets.actor)
 
   // Gallery
-  galleryData.items.forEach((img: any) => assets.push(img.img))
+  galleryData.items.forEach((item: any) => assets.push(`/Assets/Gallery/${item.img}`))
 
   // Society
   assets.push(societyData.assets.bg)

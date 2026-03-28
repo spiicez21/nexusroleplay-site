@@ -73,7 +73,7 @@ export default function GTASection({ children, bgImage, actorImage, id, classNam
       <div 
         ref={bgRef} 
         className="gta-bg" 
-        style={{ backgroundImage: `url(${bgImage})` }} 
+        style={{ backgroundImage: `url("${bgImage}")` }} 
       />
       
       {/* Actor layer */}
