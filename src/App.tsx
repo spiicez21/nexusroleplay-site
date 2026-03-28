@@ -32,15 +32,15 @@ function App() {
     const reveals = gsap.utils.toArray('.reveal-hero, .fade-up')
     reveals.forEach((el: any) => {
       gsap.fromTo(el, 
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 20 },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 1, 
-          ease: "power3.out",
+          duration: 0.8, 
+          ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
+            start: "top 95%",
             toggleActions: "play none none none"
           }
         }
@@ -88,7 +88,7 @@ function App() {
                 </p>
                 <div className="hero-actions">
                   <a href="#join" className="btn">ENTER CITY</a>
-                  <a href="#about" className="btn btn-ghost">VISION</a>
+                  <a href="#about" className="btn btn-ghost">THE VISION</a>
                 </div>
               </header>
             </div>
@@ -106,8 +106,8 @@ function App() {
               <div className="manifesto-bg-text glusp">VISION</div>
               <section className="manifesto">
                 <div className="manifesto-header fade-up">
-                  <span className="section-tag">01 // MANIFESTO</span>
-                  <div className="data-stamp">SYSTEM: ACTIVE</div>
+                  <span className="section-tag glusp">01 / MANIFESTO</span>
+                  <div className="data-stamp">SYSTEM ALPHA ACTIVE</div>
                 </div>
                 
                 <h2 className="manifesto-title glusp fade-up">
@@ -136,16 +136,16 @@ function App() {
           <div className="gta-overlay">
             <div className="gta-column-left">
               <section className="bento-section">
-                <span className="section-tag glusp fade-up" style={{ marginBottom: '3rem' }}>02 // ARCHITECTURE</span>
+                <span className="section-tag glusp fade-up" style={{ marginBottom: '2.5rem' }}>02 / ARCHITECTURE</span>
                 <div className="bento-grid">
                   <div className="bento-card fade-up">
-                    <span className="b-tag">ENGINE</span>
+                    <span className="b-tag">CORE ENGINE</span>
                     <h3>High-Tickrate Core</h3>
                     <p>Custom Lua back-end optimized for zero desync and buttery smooth physics.</p>
                   </div>
                   <div className="bento-card fade-up">
                     <span className="b-tag">ECONOMY</span>
-                    <h3>Player Markets</h3>
+                    <h3>Player-Led Markets</h3>
                     <p>Every commodity is tracked in a living, breathing financial ecosystem.</p>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ function App() {
           <div className="gta-overlay">
             <div className="gta-column-left">
               <section className="factions">
-                <span className="section-tag glusp fade-up" style={{ marginBottom: '3rem' }}>03 // SOCIETY</span>
+                <span className="section-tag glusp fade-up" style={{ marginBottom: '2.5rem' }}>03 / SOCIETY</span>
                 <div className="faction-list">
                   {[
                     { num: '01', name: 'L.S.P.D.', desc: 'Enforce order with military-grade tech and a full judicial back-end.' },
@@ -171,7 +171,7 @@ function App() {
                     { num: '03', name: 'Syndicates', desc: 'Organized hierarchies running weapon and narcotic logistics chains.' }
                   ].map((f, i) => (
                     <div key={i} className="faction-item fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
-                      <span className="f-num glusp">{f.num} /</span>
+                      <span className="f-num glusp">{f.num} / FACTION</span>
                       <span className="f-name glusp">{f.name}</span>
                       <p className="f-desc">{f.desc}</p>
                     </div>
@@ -192,7 +192,7 @@ function App() {
             <div className="gta-column-left">
               <section className="join">
                 <div className="join-card fade-up">
-                  <span className="section-tag glusp" style={{ marginBottom: '1.5rem' }}>04 // ONBOARDING</span>
+                  <span className="section-tag glusp" style={{ marginBottom: '1rem' }}>04 / ONBOARDING</span>
                   <h3 className="glusp">INITIALIZE?</h3>
                   <p>Complete the validation protocol and join the elite roleplay community.</p>
                   <a href="#" className="btn btn-large">APPLY NOW</a>
