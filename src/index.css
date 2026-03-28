@@ -39,6 +39,15 @@
   --red-accent: #e62222;
   --red-dark: #630c0c;
   --line: rgba(230, 34, 34, 0.15);
+
+  /* New Typographic Scales */
+  --fs-giant: clamp(4rem, 12vw, 15rem);
+  --fs-h2: clamp(2rem, 7vw, 6rem);
+  --fs-h3: clamp(1.2rem, 3.5vw, 2.5rem);
+  --fs-body: clamp(0.9rem, 1.1vw, 1.1rem);
+  --ls-tight: -0.04em;
+  --ls-normal: 0.05em;
+  --ls-wide: 0.25em;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,6 +69,24 @@ a, button { cursor: none; }
   font-family: var(--font-display);
   text-transform: uppercase;
   font-weight: normal;
+}
+
+.giant-text {
+  font-family: var(--font-display);
+  font-size: var(--fs-giant);
+  line-height: 0.85;
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+}
+
+.section-tag {
+  font-family: var(--font-display);
+  color: var(--red-accent);
+  font-size: 0.8rem;
+  letter-spacing: var(--ls-wide);
+  display: block;
+  margin-bottom: 2rem;
+  opacity: 0.8;
 }
 
 .noise {
