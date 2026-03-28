@@ -95,12 +95,12 @@ a { text-decoration: none; color: inherit; }
 .gta-actor {
   position: absolute;
   bottom: 0;
-  right: 0%;
-  height: 95%; 
+  right: -5%; /* Pushed right to avoid overlap */
+  height: 85%; /* Scaled down for better balance */
   width: auto;
   z-index: 3;
   pointer-events: none;
-  filter: drop-shadow(-20px 0 60px rgba(0,0,0,0.95));
+  filter: drop-shadow(-30px 0 80px rgba(0,0,0,0.8));
   transform-origin: bottom right;
 }
 
@@ -111,11 +111,11 @@ a { text-decoration: none; color: inherit; }
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 12%; 
+  padding: 0 15%; /* INCREASED SAFE-ZONE FOR EDITORIAL LOOK */
 }
 
 .gta-column-left {
-  width: 60%; /* BROADENED FOR BETTER BALANCE */
+  width: 50%; /* SLIGHTLY NARROWER TO ELIMINATE ACTOR OVERLAP */
   position: relative;
   z-index: 20;
   pointer-events: all;
@@ -143,40 +143,46 @@ a { text-decoration: none; color: inherit; }
 .nav-links a:hover { color: #fff; }
 
 /* 1. Hero Refinement */
-.hero-title { font-size: clamp(3.5rem, 8vw, 9rem); line-height: 0.85; margin-bottom: 2rem; }
-.outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.15); } /* Dimmer outline */
-.hero-subtitle { font-size: 1.3rem; line-height: 1.4; max-width: 550px; margin-bottom: 3.5rem; color: #fff; opacity: 0.8; }
+.hero-title { font-size: clamp(3.5rem, 8vw, 9rem); line-height: 0.8; margin-bottom: 2.5rem; }
+.outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); } 
+.hero-subtitle { font-size: 1.4rem; line-height: 1.6; max-width: 600px; margin-bottom: 4rem; color: #fff; opacity: 0.7; }
 
 /* 2. Manifesto Refinement */
 .manifesto-bg-text {
   position: absolute;
   top: -10%; left: -5%;
   font-family: var(--font-display);
-  font-size: 12vw;
+  font-size: 15vw;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,0.015); /* Very subtle texture */
+  -webkit-text-stroke: 1px rgba(255,255,255,0.01); 
   z-index: -1;
 }
 
-.manifesto-header { margin-bottom: 4rem; display: flex; align-items: center; gap: 1.5rem; }
-.manifesto-title { font-size: clamp(2.5rem, 5vw, 6rem); line-height: 1.1; margin-bottom: 3.5rem; }
+.manifesto-header { margin-bottom: 5rem; display: flex; align-items: center; gap: 2rem; }
+.manifesto-title { font-size: clamp(2.5rem, 5vw, 6rem); line-height: 1.1; margin-bottom: 4rem; }
 .manifesto-title .red { color: var(--red-accent); }
 
-.manifesto-text-block { border-left: 1px solid var(--red-accent); padding-left: 3rem; margin-top: 2rem; }
-.manifesto-text-block p { font-size: 1.2rem; line-height: 1.6; color: var(--text-muted); max-width: 500px; }
+.manifesto-text-block { border-left: 1px solid var(--red-accent); padding-left: 4rem; margin-top: 3rem; }
+.manifesto-text-block p { font-size: 1.3rem; line-height: 1.7; color: var(--text-muted); max-width: 550px; }
 
 /* 3. Systems Refinement */
-.bento-grid { gap: 1rem; max-width: 550px; } 
+.bento-grid { 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem; 
+  max-width: 900px; 
+} 
 
 .bento-card {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255,255,255,0.03);
-  padding: 2rem 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 3.5rem;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.b-tag { color: var(--red-accent); font-family: var(--font-display); font-size: 0.6rem; opacity: 0.6; margin-bottom: 0.8rem; display: block; }
-.bento-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #fff; letter-spacing: 0.05em; }
-.bento-card p { font-size: 0.85rem; color: #888; }
+.b-tag { font-family: var(--font-display); font-size: 0.65rem; color: var(--red-accent); letter-spacing: 0.3em; opacity: 0.8; margin-bottom: 1.5rem; display: block; }
+.bento-card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: #fff; letter-spacing: 0.05em; }
+.bento-card p { font-size: 0.95rem; line-height: 1.6; color: #888; }
 
 /* Cinematic Gallery Section */
 .gallery-section {
@@ -300,22 +306,25 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* 4. Society Refinement */
-.faction-item { padding: 2rem 0; max-width: 550px; }
-.f-num { font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.3rem; }
-.f-name { font-size: 1.6rem; margin-bottom: 0.4rem; }
-.f-desc { font-size: 0.9rem; line-height: 1.5; opacity: 0.7; }
+.faction-item { 
+  padding: 3rem 0; 
+  max-width: 650px; 
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.f-num { font-size: 0.65rem; color: var(--red-accent); letter-spacing: 0.2em; opacity: 0.8; margin-bottom: 0.8rem; display: block; }
+.f-name { font-size: 2rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+.f-desc { font-size: 1rem; line-height: 1.7; opacity: 0.5; }
 
 /* 5. Join Refinement */
 .join-card {
-  background: linear-gradient(90deg, rgba(230,34,34,0.03) 0%, transparent 100%);
-  border: 1px solid rgba(230,34,34,0.2);
-  padding: 4rem;
+  background: linear-gradient(90deg, rgba(230,34,34,0.02) 0%, transparent 100%);
+  border-left: 1px solid var(--red-accent);
+  padding: 5rem;
   width: 100%;
-  max-width: 550px;
-  min-width: 350px;
+  max-width: 650px;
 }
-.join-card h3 { font-size: 2.5rem; margin-bottom: 1.5rem; }
-.join-card p { font-size: 1rem; margin-bottom: 2.5rem; }
+.join-card h3 { font-size: 3.5rem; margin-bottom: 2rem; letter-spacing: -0.02em; }
+.join-card p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 3.5rem; opacity: 0.6; max-width: 450px; }
 
 /* Buttons */
 .btn { 
