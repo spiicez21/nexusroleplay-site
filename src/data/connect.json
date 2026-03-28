@@ -1,0 +1,11 @@
+{
+  "tag": "SERVER STATUS: OPERATIONAL",
+  "title": "NEXUS CONNECT",
+  "ip": "PLAY.NEXUSCITY.COM",
+  "subtitle": "Direct connection protocol for the elite tier.",
+  "status": "online",
+  "assets": {
+    "bg": "/Assets/RJ/BG-rj.png",
+    "actor": "/Assets/Architecture/actor-arch.png"
+  }
+}

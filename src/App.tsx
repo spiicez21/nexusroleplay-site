@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -10,6 +10,7 @@ import Footer from './components/sections/Footer'
 
 // Section Modules
 import Hero from './components/sections/Hero'
+import Connect from './components/sections/Connect'
 import Manifesto from './components/sections/Manifesto'
 import Architecture from './components/sections/Architecture'
 import Gallery from './components/sections/Gallery'
@@ -23,21 +24,61 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const appRef = useRef<HTMLDivElement>(null)
-  const cursorRef = useRef<HTMLDivElement>(null)
+  const dotRef = useRef<HTMLDivElement>(null)
+  const followerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useGSAP(() => {
+    // QuickSetters for high performance 
+    const setDotX = gsap.quickSetter(dotRef.current, "x", "px")
+    const setDotY = gsap.quickSetter(dotRef.current, "y", "px")
+    const setFollowerX = gsap.quickSetter(followerRef.current, "x", "px")
+    const setFollowerY = gsap.quickSetter(followerRef.current, "y", "px")
+
     const moveCursor = (e: MouseEvent) => {
-      gsap.to(cursorRef.current, {
-        x: e.clientX,
-        y: e.clientY,
-        opacity: 1,
-        duration: 0.1,
-        ease: "power2.out"
+      // Physical Dot (0 delay)
+      setDotX(e.clientX)
+      setDotY(e.clientY)
+      
+      // Delay Follower (0.15s delay)
+      gsap.to({}, {
+        duration: 0.15,
+        onUpdate: () => {
+          setFollowerX(e.clientX)
+          setFollowerY(e.clientY)
+        }
+      })
+
+      // Initial Reveal 
+      gsap.to([dotRef.current, followerRef.current], { opacity: 1, duration: 0.3 })
+    }
+
+    const handleHover = () => {
+      gsap.to(followerRef.current, { scale: 3, backgroundColor: "rgba(230, 34, 34, 0.1)", duration: 0.3 })
+      gsap.to(dotRef.current, { scale: 1.5, duration: 0.3 })
+    }
+
+    const handleUnhover = () => {
+      gsap.to(followerRef.current, { scale: 1, backgroundColor: "transparent", duration: 0.3 })
+      gsap.to(dotRef.current, { scale: 1, duration: 0.3 })
+    }
+
+    window.addEventListener("mousemove", moveCursor)
+    
+    // Attach to all interactive elements
+    const interactives = document.querySelectorAll('a, button, .gallery-item, .bento-card')
+    interactives.forEach(el => {
+      el.addEventListener('mouseenter', handleHover)
+      el.addEventListener('mouseleave', handleUnhover)
+    })
+
+    return () => {
+      window.removeEventListener("mousemove", moveCursor)
+      interactives.forEach(el => {
+        el.removeEventListener('mouseenter', handleHover)
+        el.removeEventListener('mouseleave', handleUnhover)
       })
     }
-    window.addEventListener("mousemove", moveCursor)
-    return () => window.removeEventListener("mousemove", moveCursor)
-  }, [])
+  }, { scope: appRef, dependencies: [isLoading] })
 
   useGSAP(() => {
     if (isLoading) return
@@ -63,7 +104,8 @@ function App() {
 
   return (
     <div ref={appRef} className="app-container">
-      <div className="cursor" ref={cursorRef} />
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-follower" ref={followerRef} />
       <div className="noise" />
 
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
@@ -72,6 +114,7 @@ function App() {
 
       <main>
         <Hero />
+        <Connect />
         <Manifesto />
         <Architecture />
         <Gallery />
