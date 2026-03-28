@@ -30,6 +30,7 @@ function App() {
       gsap.to(cursorRef.current, {
         x: e.clientX,
         y: e.clientY,
+        opacity: 1,
         duration: 0.1,
         ease: "power2.out"
       })

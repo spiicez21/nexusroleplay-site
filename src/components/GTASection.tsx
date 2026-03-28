@@ -84,11 +84,7 @@ export default function GTASection({ children, bgImage, actorImage, id, classNam
       />
 
       {/* Overlay Content */}
-      <div className="gta-overlay">
-        <div className="gta-content-wrapper">
-          {children}
-        </div>
-      </div>
+      {children}
     </section>
   );
 }
