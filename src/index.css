@@ -40,11 +40,16 @@
   --red-dark: #630c0c;
   --line: rgba(230, 34, 34, 0.15);
 
-  /* New Typographic Scales */
-  --fs-giant: clamp(4rem, 12vw, 15rem);
-  --fs-h2: clamp(2rem, 7vw, 6rem);
-  --fs-h3: clamp(1.2rem, 3.5vw, 2.5rem);
-  --fs-body: clamp(0.9rem, 1.1vw, 1.1rem);
+  /* New Typographic Scales - Refined for better responsiveness */
+  --fs-giant: clamp(3.5rem, 12vw, 15rem);
+  --fs-h2: clamp(1.8rem, 7vw, 6rem);
+  --fs-h3: clamp(1.1rem, 3.5vw, 2.5rem);
+  --fs-body: clamp(0.85rem, 1.1vw, 1.1rem);
+  
+  /* Responsive Layout Variables */
+  --safe-padding: clamp(1.5rem, 8vw, 15%);
+  --section-spacing: clamp(6rem, 12vh, 15vh);
+  
   --ls-tight: -0.04em;
   --ls-normal: 0.05em;
   --ls-wide: 0.25em;

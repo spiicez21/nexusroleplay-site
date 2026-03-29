@@ -28,6 +28,10 @@ function App() {
   const followerRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
+    // Disable custom cursor on touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    if (isTouchDevice) return
+
     // QuickSetters for high performance 
     const setDotX = gsap.quickSetter(dotRef.current, "x", "px")
     const setDotY = gsap.quickSetter(dotRef.current, "y", "px")

@@ -1,5 +1,7 @@
 import GTASection from '../GTASection'
 import heroData from '../../data/hero.json'
+import Button from '../ui/Button'
+import StatusIndicator from '../ui/StatusIndicator'
 
 const Hero = () => {
   return (
@@ -12,6 +14,7 @@ const Hero = () => {
       <div className="gta-overlay">
         <div className="gta-column-left reveal-hero">
           <header className="hero-content">
+            <StatusIndicator label="SYSTEM ONLINE | CA-01" className="fade-up" />
             <h1 className="hero-title glusp">
               {heroData.title.main}<br/><span className="outline">{heroData.title.outline}</span>
             </h1>
@@ -20,13 +23,14 @@ const Hero = () => {
             </p>
             <div className="hero-actions">
               {heroData.actions.map((action, i) => (
-                <a 
+                <Button 
                   key={i} 
                   href={action.href} 
-                  className={`btn ${action.primary ? '' : 'btn-ghost'}`}
+                  variant={action.primary ? 'primary' : 'ghost'}
+                  size="large"
                 >
                   {action.label}
-                </a>
+                </Button>
               ))}
             </div>
           </header>

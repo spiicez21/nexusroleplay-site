@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import connectData from '../../data/connect.json'
 import gsap from 'gsap'
+import StatusIndicator from '../ui/StatusIndicator'
 
 const Connect = () => {
   const [copied, setCopied] = useState(false)
@@ -20,10 +21,7 @@ const Connect = () => {
     <section id="connect" className="connect-section">
       <div className="connect-card fade-up">
         <div className="connect-info">
-          <div className="status-indicator">
-            <div className="pulse-dot" />
-            <span>{connectData.tag}</span>
-          </div>
+          <StatusIndicator label={connectData.tag} />
           <h2 className="glusp">{connectData.title}</h2>
           <p className="connect-sub">{connectData.subtitle}</p>
         </div>

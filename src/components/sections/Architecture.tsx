@@ -1,5 +1,6 @@
 import GTASection from '../GTASection'
 import archData from '../../data/architecture.json'
+import BentoCard from '../ui/BentoCard'
 
 const Architecture = () => {
   return (
@@ -15,11 +16,13 @@ const Architecture = () => {
             <span className="section-tag glusp fade-up" style={{ marginBottom: '2.5rem' }}>{archData.tag}</span>
             <div className="bento-grid">
               {archData.cards.map((card, i) => (
-                <div key={i} className="bento-card fade-up">
-                  <span className="b-tag">{card.tag}</span>
-                  <h3>{card.title}</h3>
-                  <p>{card.desc}</p>
-                </div>
+                <BentoCard 
+                  key={i} 
+                  tag={card.tag} 
+                  title={card.title} 
+                  desc={card.desc} 
+                  className="fade-up"
+                />
               ))}
             </div>
           </section>

@@ -1,21 +1,31 @@
-import navData from '../../data/navigation.json'
+import { useState } from 'react'
 
-const Navbar = () => {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <nav className="nav reveal-hero">
-      <a href="#top" className="logo">
-        <img src={navData.logo.src} alt="NEXUS RP" />
-        <span className="glusp">{navData.logo.text}</span>
-      </a>
-      <div className="nav-links">
-        {navData.links.map((link, i) => (
-          <a key={i} href={link.href} style={link.highlight ? { color: 'var(--red-accent)' } : undefined}>
-            {link.label}
-          </a>
-        ))}
+      <div className="logo glusp">
+        <img src="/Logo/Logo.png" alt="Nexus" />
+        NEXUS
+      </div>
+
+      <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+        <a href="#hero" onClick={() => setIsOpen(false)}>HOME</a>
+        <a href="#about" onClick={() => setIsOpen(false)}>ABOUT</a>
+        <a href="#architecture" onClick={() => setIsOpen(false)}>SYSTEMS</a>
+        <a href="#society" onClick={() => setIsOpen(false)}>SOCIETY</a>
+        <a href="#join" onClick={() => setIsOpen(false)}>JOIN</a>
+      </div>
+
+      <div 
+        className={`menu-toggle ${isOpen ? 'active' : ''}`} 
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </nav>
   )
 }
-
-export default Navbar
