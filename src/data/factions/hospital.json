@@ -1,59 +1,264 @@
 {
   "id": "hospital",
-  "name": "NXMD (Hospital)",
+  "name": "NXMD (EMS)",
   "type": "GOVERNMENT JOB",
-  "mission": "To preserve life in the face of absolute chaos. Every life is worth attempting to save.",
-  "vision": "To implement world-class medical roleplay utilizing advanced triage mechanics and immersive surgical systems.",
-  "rules": {
-    "basic": [
-      "Neutrality is absolute; paramedics must never involve themselves in turf wars.",
-      "Never deny service based on a citizen's background or criminal record.",
-      "Scene safety first: wait for police clearance on active shootouts."
-    ],
-    "advanced": [
-      "Major trauma requires transport to Pillbox Hill; field revivals are for minor injuries only.",
-      "Detailed medical logs must be kept for all major operations.",
-      "Do not utilize police radios unless declaring a 10-33."
-    ]
-  },
+  "mission": "To preserve life using in-depth roleplay, elevated realism, and professional medical conduct.",
+  "vision": "A crucial pillar of server functionality where creativity forms the standard for treatment, and scene safety dictates operation.",
+  "rules": [
+    {
+      "title": "Absence Notification Policy",
+      "points": [
+        "Inactivity of 5+ days must be reported to a Senior Officer or filed through an official Leave Request.",
+        "Unexplained inactivity can lead to immediate removal from the department.",
+        "Extended leave (>14 days) requires explicit authorization from the EMS Chief or Senior Administration."
+      ]
+    },
+    {
+      "title": "Radio Discipline & Communication",
+      "points": [
+        "Report on-duty with: 'EMS active, 10-8.'",
+        "Keep transmissions brief and mission-relevant (calls, patient info, status updates).",
+        "Stay active on radio unless: Off-duty, In Training, Performing Surgeries, or Confidential Discussions.",
+        "Excessive chatter, non-RP talk, or joking on the radio is strictly prohibited."
+      ]
+    },
+    {
+      "title": "Scene Safety Guidelines",
+      "points": [
+        "No Entry: Do not intervene in dangerous areas (shootouts, robberies, gang conflicts) without LEO support.",
+        "Always request police support for prison or crime-scene calls.",
+        "If no LEOs are available, do not proceed — mark the call as 'unreachable' for safety."
+      ]
+    },
+    {
+      "title": "Treatment & Transport Protocols",
+      "points": [
+        "In-depth Roleplay: Perform realistic medical assessments for all injuries.",
+        "Creativity: Enhanced procedures (CPR, splinting, field surgery) are highly encouraged.",
+        "Consent: Always required unless the patient is unconscious or severely impaired.",
+        "Transports: Update radio with '10-80, en-route to hospital with [X] patient'."
+      ]
+    },
+    {
+      "title": "Promotion Pathway",
+      "points": [
+        "Factors: Consistent presence, professionalism, positive attitude, and creative medical RP.",
+        "Disqualifiers: Repeatedly requesting promotions, active infractions, or poor conduct.",
+        "Earn recognition through professional actions, not words alone."
+      ]
+    },
+    {
+      "title": "Expected Conduct",
+      "points": [
+        "Maintain professional IC behavior at all times, especially while at HQ.",
+        "Stock medical supplies regularly to ensure constant readiness.",
+        "De-escalate confrontations or report issues after a scene has concluded.",
+        "Never carry non-medical weapons or contraband on duty. Corruption results in immediate removal."
+      ]
+    },
+    {
+      "title": "Vehicle Usage Rules",
+      "points": [
+        "Only drive assigned EMS units. Personal/civilian vehicle use is prohibited on duty.",
+        "Practice safe, realistic driving. Reckless maneuvers are forbidden.",
+        "Use emergency signals (lights/sirens) only when medically justified."
+      ]
+    },
+    {
+      "title": "Immersive Medical RP Standards",
+      "points": [
+        "Roleplay every action: Even basics like applying bandages or taking vitals.",
+        "Avoid robotic /me commands. Tailor your responses to each patient situation.",
+        "Avoid 'revive and go' - always leave a lasting, realistic roleplay impression."
+      ]
+    },
+    {
+      "title": "Hospital Etiquette",
+      "points": [
+        "Stay alert at HQ. Do not loiter in lobbies or clutter the ER.",
+        "Maintain character and avoid OOC talk while in uniform.",
+        "When in doubt, consult a superior through appropriate IC/OOC channels."
+      ]
+    },
+    {
+      "title": "Blacklist Offenses",
+      "points": [
+        "Abusing the medic role to assist in criminal acts.",
+        "Reviving teammates during active gunfights or hostile situations.",
+        "Failing to follow department SOPs or treating EMS as a non-RP job."
+      ]
+    },
+    {
+      "title": "Forbidden RP Scenarios",
+      "points": [
+        "No Revivals: Burnt, exploded, or severely mangled bodies.",
+        "No Revivals: Deep-sea drownings or unrecoverable bodies.",
+        "No Collusion: Working as a scout, mole, or spy for criminal organizations."
+      ]
+    }
+  ],
   "roles": [
     {
-      "name": "Chief of Medicine",
-      "desc": "Handles all hospital administration and policy."
+      "category": "Administration & Command",
+      "tier": 1,
+      "name": "Medical Director",
+      "desc": "Head of the Nexus Medical Department — Principal Overseer of all administrative and medical operations."
     },
     {
-      "name": "Surgeon",
-      "desc": "Capable of complex operative roleplay for major injuries."
+      "category": "Administration & Command",
+      "tier": 1,
+      "name": "Dean",
+      "desc": "Administration — High-level strategist responsible for department-wide policy and medical excellence."
     },
     {
-      "name": "EMT Paramedic",
-      "desc": "First responders utilizing mobile triage units."
+      "category": "Administration & Command",
+      "tier": 1,
+      "name": "Assistant Dean",
+      "desc": "Administration — Operational lead managing day-to-day department logistics and hospital flow."
     },
     {
-      "name": "Therapist",
-      "desc": "Dedicated psychological evaluations for high-stress jobs."
+      "category": "Advanced Specialists & Surgeons",
+      "tier": 2,
+      "name": "Neurosurgeon (NSG)",
+      "desc": "Surgical Tier — Highest level of operative precision for critical neurological trauma."
+    },
+    {
+      "category": "Advanced Specialists & Surgeons",
+      "tier": 2,
+      "name": "Orthopedic Surgeon (ORT)",
+      "desc": "Surgical Tier — Expert in skeletal reconstruction and complex bone trauma management."
+    },
+    {
+      "category": "Advanced Specialists & Surgeons",
+      "tier": 2,
+      "name": "Anesthesiologist (ANE)",
+      "desc": "Specialist Tier — Managing critical care sedation and intraoperative patient stability."
+    },
+    {
+      "category": "Advanced Specialists & Surgeons",
+      "tier": 2,
+      "name": "Pathologist (PAT)",
+      "desc": "Specialist Tier — Leading clinical research, laboratory forensics, and diagnostic analysis."
+    },
+    {
+      "category": "Specialist Doctors",
+      "tier": 2,
+      "name": "Neurologist (NEU)",
+      "desc": "Expert diagnostics focused on advanced brain and central nervous system pathology."
+    },
+    {
+      "category": "Specialist Doctors",
+      "tier": 2,
+      "name": "Psychiatrist (PSY)",
+      "desc": "Provider of crucial mental health evaluations and psychiatric medicine for high-stakes roles."
+    },
+    {
+      "category": "Specialist Doctors",
+      "tier": 2,
+      "name": "ENT Specialist (ENT)",
+      "desc": "Otolaryngology lead for specialized ear, nose, and throat diagnostic procedures."
+    },
+    {
+      "category": "Specialist Doctors",
+      "tier": 2,
+      "name": "Pediatrician (PED)",
+      "desc": "Primary caregiver for the neonatal and younger demographic within Nexus City."
+    },
+    {
+      "category": "Specialist Doctors",
+      "tier": 2,
+      "name": "Dermatologist (DER)",
+      "desc": "Specialist in soft tissue management, grafts, and advanced skin trauma diagnostics."
+    },
+    {
+      "category": "Emergency & Allied Health",
+      "tier": 3,
+      "name": "General Physician (GPH)",
+      "desc": "Allied Health — Essential comprehensive primary care and specialized triage lead."
+    },
+    {
+      "category": "Emergency & Allied Health",
+      "tier": 3,
+      "name": "Diagnostic Specialist (RAD)",
+      "desc": "Allied Health — Primary operator of radiological imaging and diagnostic equipment."
+    },
+    {
+      "category": "Emergency & Allied Health",
+      "tier": 3,
+      "name": "ER Technician (ERT)",
+      "desc": "Allied Health — Specialist in hospital intake, emergency stabilization, and rapid triage."
+    },
+    {
+      "category": "Emergency & Allied Health",
+      "tier": 3,
+      "name": "Physiotherapist (PHY)",
+      "desc": "Allied Health — Guiding survivors through rigorous post-trauma physical rehabilitation."
+    },
+    {
+      "category": "Junior Medical Staff",
+      "tier": 3,
+      "name": "Senior Paramedic (SPM)",
+      "desc": "Staff Tier — Distinguished field supervisor and mentor to the probationary response team."
+    },
+    {
+      "category": "Junior Medical Staff",
+      "tier": 3,
+      "name": "Paramedic (PAR)",
+      "desc": "Staff Tier — Fully qualified emergency responder and frontline medical officer."
+    },
+    {
+      "category": "Junior Medical Staff",
+      "tier": 3,
+      "name": "Junior Paramedic (JPM)",
+      "desc": "Staff Tier — Tactical responder undergoing advanced field certification."
+    },
+    {
+      "category": "Junior Medical Staff",
+      "tier": 3,
+      "name": "Intern (INT)",
+      "desc": "Staff Tier — Probationary cadet undergoing rigorous clinical observation and field training."
     }
   ],
   "codes": [
     {
+      "code": "10-2",
+      "meaning": "Arrived on scene"
+    },
+    {
       "code": "10-4",
-      "meaning": "Message Received"
+      "meaning": "Acknowledged"
     },
     {
       "code": "10-7",
-      "meaning": "Off Duty"
+      "meaning": "Going off duty"
     },
     {
       "code": "10-8",
-      "meaning": "On Duty / In Service"
+      "meaning": "Going on duty"
     },
     {
-      "code": "10-52",
-      "meaning": "Requires Medical Assistance"
+      "code": "10-20",
+      "meaning": "Location"
     },
     {
-      "code": "10-11",
-      "meaning": "Traffic Stop"
+      "code": "10-50",
+      "meaning": "Backup requested"
+    },
+    {
+      "code": "10-70",
+      "meaning": "Responding to scene"
+    },
+    {
+      "code": "10-80",
+      "meaning": "Transporting to hospital"
+    },
+    {
+      "code": "10-90",
+      "meaning": "Negative Pursuit"
+    },
+    {
+      "code": "10-100",
+      "meaning": "Situation resolved"
     }
   ],
   "assets": {

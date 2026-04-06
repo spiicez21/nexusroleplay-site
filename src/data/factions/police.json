@@ -4,34 +4,48 @@
   "type": "GOVERNMENT JOB",
   "mission": "To enforce the law, maintain order, and protect the citizens of Nexus City through unwavering dedication and tactical superiority.",
   "vision": "A self-sustaining judicial ecosystem where crime is met with calculated, overwhelming force, and justice is swiftly delivered.",
-  "rules": {
-    "basic": [
-      "Always respect the chain of command.",
-      "Lethal force is authorized only when civilian lives are in imminent danger.",
-      "Bodycams must remain active during all active pursuits and engagements."
-    ],
-    "advanced": [
-      "High-speed pursuits require clear communication and must not endanger populated zones.",
-      "All seized narcotics and weapons must be rigorously documented in the evidence locker.",
-      "Interrogations require at least two officers present at all times."
-    ]
-  },
+  "rules": [
+    {
+      "title": "Basic Protocol",
+      "points": [
+        "Always respect the chain of command.",
+        "Lethal force is authorized only when civilian lives are in imminent danger.",
+        "Bodycams must remain active during all active pursuits and engagements."
+      ]
+    },
+    {
+      "title": "Advanced Protocol",
+      "points": [
+        "High-speed pursuits require clear communication and must not endanger populated zones.",
+        "All seized narcotics and weapons must be rigorously documented in the evidence locker.",
+        "Interrogations require at least two officers present at all times."
+      ]
+    }
+  ],
   "roles": [
     {
+      "category": "🔴 High Command",
+      "tier": 1,
       "name": "Chief of Police",
-      "desc": "Oversees the entire department and judicial relations."
+      "desc": "Executive Oversight — Lead director of the NXPD responsible for departmental strategy and legal relations."
     },
     {
+      "category": "🚔 Field Operations",
+      "tier": 2,
       "name": "S.W.A.T. Operator",
-      "desc": "Specialized tactical unit for hostage and terrorism situations."
+      "desc": "Specialized Units — Tactical expert trained for hostage rescue and high-risk syndicate engagements."
     },
     {
+      "category": "🚔 Field Operations",
+      "tier": 2,
       "name": "Detective",
-      "desc": "Handles plain-clothes investigations strings and syndicate tracking."
+      "desc": "Investigative Lead — Senior investigator specializing in complex crime strings and undercover tracking."
     },
     {
+      "category": "🚔 Field Operations",
+      "tier": 3,
       "name": "Patrol Officer",
-      "desc": "The backbone of city law enforcement."
+      "desc": "Uniformed Division — The backbone of city law enforcement, managing first-response and public safety."
     }
   ],
   "codes": [
