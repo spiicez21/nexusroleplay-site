@@ -18,9 +18,9 @@ export default function BentoCard({
 }: BentoCardProps) {
   return (
     <div className={`bento-card ${className}`} style={style}>
-      {tag && <span className="b-tag glusp">{tag}</span>}
-      <h3 className="glusp">{title}</h3>
-      <p>{desc}</p>
+      {tag && <span className="b-tag glusp fw-slim">{tag}</span>}
+      <h3 className="glusp fw-bold">{title}</h3>
+      <p className="fw-slim">{desc}</p>
     </div>
   );
 }

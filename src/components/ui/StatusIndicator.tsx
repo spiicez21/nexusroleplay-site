@@ -12,7 +12,7 @@ export default function StatusIndicator({
   return (
     <div className={`status-indicator ${className}`}>
       <div className="pulse-dot" style={{ background: pulseColor, boxShadow: `0 0 8px ${pulseColor}` }} />
-      <span className="glusp">{label}</span>
+      <span className="glusp fw-slim">{label}</span>
     </div>
   );
 }

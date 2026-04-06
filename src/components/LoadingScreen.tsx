@@ -72,7 +72,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       <div className="siren-overlay blue-siren" />
       
       <div className="loading-content">
-        <div ref={logoRef} className="loading-logo glusp">NEXUS CITY</div>
+        <div ref={logoRef} className="loading-logo glusp fw-bold">NEXUS CITY</div>
       </div>
     </div>
   )

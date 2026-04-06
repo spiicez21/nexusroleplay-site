@@ -13,10 +13,10 @@ const Join = () => {
         <div className="gta-column-left">
           <section className="join">
             <div className="join-card fade-up">
-              <span className="section-tag glusp" style={{ marginBottom: '1rem' }}>{joinData.tag}</span>
-              <h3 className="glusp">{joinData.title}</h3>
-              <p>{joinData.text}</p>
-              <a href={joinData.action.href} className="btn btn-large">{joinData.action.label}</a>
+              <span className="section-tag glusp fw-slim" style={{ marginBottom: '1rem' }}>{joinData.tag}</span>
+              <h3 className="glusp fw-bold">{joinData.title}</h3>
+              <p className="fw-slim">{joinData.text}</p>
+              <a href={joinData.action.href} className="btn btn-large glusp fw-bold">{joinData.action.label}</a>
             </div>
           </section>
         </div>

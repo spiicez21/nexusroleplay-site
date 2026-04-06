@@ -22,20 +22,21 @@ const Connect = () => {
       <div className="connect-card fade-up">
         <div className="connect-info">
           <StatusIndicator label={connectData.tag} />
-          <h2 className="glusp">{connectData.title}</h2>
-          <p className="connect-sub">{connectData.subtitle}</p>
+          <h2 className="glusp fw-bold">{connectData.title}</h2>
+          <p className="connect-sub fw-slim">{connectData.subtitle}</p>
         </div>
 
         <div className="ip-container" onClick={handleCopy}>
           <div className="ip-block">
-            <span className="glusp ip-text">{connectData.ip}</span>
+            <span className="section-tag glusp" style={{ marginBottom: '0.5rem' }}>TERMINAL ADDRESS</span>
+            <span className="glusp ip-text fw-bold">{connectData.ip}</span>
           </div>
           
           <div className="copy-btn-overlay">
-            <span className="glusp">{copied ? '✓ COPIED' : 'COPY TO CLIPBOARD'}</span>
+            <span className="glusp fw-slim">{copied ? '✓ REPLICATED' : 'CLICK TO COPY ADDRESS'}</span>
           </div>
 
-          <div className="copy-feedback glusp">SERVER ADDRESS REPLICATED</div>
+          <div className="copy-feedback glusp fw-bold">NETWORK STRING COPIED</div>
           <div className="ip-scanner" />
         </div>
       </div>
@@ -44,3 +45,4 @@ const Connect = () => {
 }
 
 export default Connect
+

@@ -12,19 +12,20 @@ const Manifesto = () => {
       <div className="gta-overlay">
         <div className="gta-column-left">
           <div className="manifesto-bg-text glusp">{manifestData.bgText}</div>
+          
           <section className="manifesto">
             <div className="manifesto-header fade-up">
               <span className="section-tag glusp">{manifestData.tag}</span>
-              <div className="data-stamp">{manifestData.status}</div>
+              <div className="data-stamp fw-slim">{manifestData.status}</div>
             </div>
             
             <h2 className="manifesto-title glusp fade-up">
-              {manifestData.title.white}<br/>
-              <span className="red">{manifestData.title.red}</span> {manifestData.title.end}<br/> 
+              <span className="fw-bold">{manifestData.title.white}</span><br/>
+              <span className="red fw-bold">{manifestData.title.red}</span> <span className="fw-bold">{manifestData.title.end}</span>
             </h2>
 
             <div className="manifesto-text-block fade-up">
-              <p>{manifestData.text}</p>
+              <p className="fw-slim">{manifestData.text}</p>
             </div>
           </section>
         </div>
@@ -34,3 +35,4 @@ const Manifesto = () => {
 }
 
 export default Manifesto
+
