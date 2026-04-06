@@ -1,89 +1,295 @@
 {
   "id": "police",
-  "name": "N.X.P.D. (Police)",
+  "name": "NXPD (POLICE)",
   "type": "GOVERNMENT JOB",
   "mission": "To enforce the law, maintain order, and protect the citizens of Nexus City through unwavering dedication and tactical superiority.",
   "vision": "A self-sustaining judicial ecosystem where crime is met with calculated, overwhelming force, and justice is swiftly delivered.",
   "rules": [
     {
-      "title": "Basic Protocol",
+      "title": "Application – Terms & Conditions",
       "points": [
-        "Always respect the chain of command.",
-        "Lethal force is authorized only when civilian lives are in imminent danger.",
-        "Bodycams must remain active during all active pursuits and engagements."
+        "I accept all disciplinary actions regarding promotions, suspensions, or dismissals as IC roleplay and will not take them personally.",
+        "Upon resignation/dismissal, I will only participate in legal/whitelisted roles. Illegal activity results in strict disciplinary action.",
+        "I confirm I have read and fully understood all NXPD Rules and am 18+ years of age.",
+        "I possess valid licenses (Bike, Car, Truck, Weapons) and consent to background verification by PD officials.",
+        "All provided information is accurate; false details result in permanent disqualification.",
+        "I agree to avoid character breaking, gang bias, vengeance behavior, and power gaming.",
+        "I will strictly follow all orders from higher authorities and accept my assigned rank without demand.",
+        "Voice changers causing discomfort are prohibited. Voice verification is mandatory during interviews.",
+        "Selected candidates begin as a Trainee for 3 days; promotions depend on performance evaluation.",
+        "Misconduct or disobedience as a trainee results in immediate termination.",
+        "No favoritism, friendly RP bias, or 'Bad Cop' behavior is tolerated.",
+        "Selling, giving away, or misusing police-issued or confiscated items results in a permanent ban.",
+        "Discussing past gang/failed RP scenarios or making defamatory statements is prohibited.",
+        "Report rule violations through official OOC channels to High Command after the scene.",
+        "Maintain professionalism and respect toward civilians at all times, regardless of provocation."
       ]
     },
     {
-      "title": "Advanced Protocol",
+      "title": "Selection Process Protocol",
       "points": [
-        "High-speed pursuits require clear communication and must not endanger populated zones.",
-        "All seized narcotics and weapons must be rigorously documented in the evidence locker.",
-        "Interrogations require at least two officers present at all times."
+        "Applications open once monthly for one week only to maintain managed trainee batches.",
+        "Preparations include a detailed application checked by the Head of Dept for the 'PD Interview' role.",
+        "Interviews are announced via the NXPD Notice Board. Required licenses must be obtained before the session.",
+        "Interviews are conducted by two officers from 'Head of Dept' and 'High Command'.",
+        "Successful candidates are posted at the end of the application window.",
+        "Initial Stage: Trainee. Fresnel/Experienced must buy their own car, weapon, and armory.",
+        "Post-initial 3-day training sessions are mandatory for qualification and first promotion."
+      ]
+    },
+    {
+      "title": "Protocol-01: Traffic Stop Procedure",
+      "points": [
+        "Activate sirens and instruct the driver to pull over safely to a designated area.",
+        "Inform dispatch via radio and request backup (10-50).",
+        "Approach cautiously: Instruct driver to turn off engine and exit the vehicle safely.",
+        "Record vehicle registration and update in system (/100).",
+        "Inform driver of the stop reason and verify ID, License, and RC Book.",
+        "Restrictions: Search, arrest, or detention for minor violations is prohibited.",
+        "Failing to stop: Request backup (10-50). Up to 5 units may engage in pursuit.",
+        "Upon apprehension after evasion, search and full investigation are permitted."
+      ]
+    },
+    {
+      "title": "Protocol-02: Terry Stop Procedure",
+      "points": [
+        "Conduct when reasonable suspicion exists (Warrant or BOLO alert).",
+        "Activate sirens and request (10-50) backup immediately.",
+        "Maintain conversation with the suspect until backup arrives on scene.",
+        "Once backup is present: Order suspect to exit and raise hands.",
+        "Detain, handcuff, and clearly state the reason for detention.",
+        "Conduct search of suspect and vehicle (trunk/glove box) upon lawful arrest.",
+        "Non-compliance: Maximum 5 officers may pursue an evading suspect."
+      ]
+    },
+    {
+      "title": "Protocol-03: Hostage Handling",
+      "points": [
+        "Initial: Assign a Hostage Handler and established a perimeter with spike strips.",
+        "Communication: Maintain direct, in-person negotiation only. Officers must take cover.",
+        "Negotiation: Gather intelligence (Suspects, Weapons, Vehicle ID) and identify demands.",
+        "Release: Secure safe hostage release; allow suspects to leave only if instructed by Lead Officer.",
+        "Post-Rescue: Temporarily cuff hostage for safety, conduct search, and interview.",
+        "Final: Transport hostage to safety and rejoin active pursuit or return to station."
+      ]
+    },
+    {
+      "title": "Key Law Enforcement Terms",
+      "points": [
+        "Suspect: Individual believed to be involved in a crime, but not yet proven guilty.",
+        "Criminal: Person proven guilty through evidence, legal proceedings, or confession.",
+        "Warrant: Legal document for arrest or search issued when sufficient evidence exists.",
+        "BOLO: 'Be On the Lookout' alert for wanted persons, vehicles, or objects of interest."
       ]
     }
   ],
   "roles": [
     {
-      "category": "🔴 High Command",
+      "category": "Head of Department",
       "tier": 1,
-      "name": "Chief of Police",
-      "desc": "Executive Oversight — Lead director of the NXPD responsible for departmental strategy and legal relations."
+      "name": "DGP - Director General of Police",
+      "desc": "Principal Overseer of the Nexus Police Department. Final authority on all policy and command."
     },
     {
-      "category": "🚔 Field Operations",
+      "category": "Head of Department",
+      "tier": 1,
+      "name": "SDGP - Special Director General of Police",
+      "desc": "High-level Operations Command and strategic oversight."
+    },
+    {
+      "category": "Head of Department",
+      "tier": 1,
+      "name": "ADGP - Additional Director General of Police",
+      "desc": "Support to the DG and managing administrative/tactical support units."
+    },
+    {
+      "category": "NXPD High Command",
+      "tier": 1,
+      "name": "IG - Inspector General of Police",
+      "desc": "Regional supervisor and disciplinary authority for department-wide standards."
+    },
+    {
+      "category": "NXPD High Command",
+      "tier": 1,
+      "name": "DIG - Deputy Inspector General of Police",
+      "desc": "Assistant to IG, managing multiple district operations units."
+    },
+    {
+      "category": "NXPD High Command",
+      "tier": 1,
+      "name": "AIG - Assistant Inspector General of Police",
+      "desc": "Centralized management of specialized tactical/investigation units."
+    },
+    {
+      "category": "NXPD Commander",
       "tier": 2,
-      "name": "S.W.A.T. Operator",
-      "desc": "Specialized Units — Tactical expert trained for hostage rescue and high-risk syndicate engagements."
+      "name": "SP - Superintendent of Police",
+      "desc": "District command lead. Responsible for localized force deployment."
     },
     {
-      "category": "🚔 Field Operations",
+      "category": "NXPD Commander",
       "tier": 2,
-      "name": "Detective",
-      "desc": "Investigative Lead — Senior investigator specializing in complex crime strings and undercover tracking."
+      "name": "DSP - Deputy Superintendent of Police",
+      "desc": "Lead field officer for large-scale operations and special tactical scenes."
     },
     {
-      "category": "🚔 Field Operations",
+      "category": "NXPD Commander",
+      "tier": 2,
+      "name": "ASP - Assistant Superintendent of Police",
+      "desc": "Entry-tier commander overseeing district units and specialized training."
+    },
+    {
+      "category": "NXPD Supervisor",
+      "tier": 2,
+      "name": "CP - Commissioner of Police",
+      "desc": "High-level supervisory role managing officer conduct and field investigations."
+    },
+    {
+      "category": "NXPD Supervisor",
+      "tier": 2,
+      "name": "DCP - Deputy Commissioner of Police",
+      "desc": "Secondary supervisory authority overseeing localized task forces."
+    },
+    {
+      "category": "NXPD Supervisor",
+      "tier": 2,
+      "name": "ACP - Assistant Commissioner of Police",
+      "desc": "Managing frontline patrol squads and ensuring rule compliance."
+    },
+    {
+      "category": "NXPD Supervisor",
+      "tier": 2,
+      "name": "INS – Inspector",
+      "desc": "Field supervisor and scene lead for complex investigations and pursuits."
+    },
+    {
+      "category": "NXPD Enlisted",
       "tier": 3,
-      "name": "Patrol Officer",
-      "desc": "Uniformed Division — The backbone of city law enforcement, managing first-response and public safety."
+      "name": "SI - Sub-Inspector",
+      "desc": "First-tier of field leadership. Lead officer for routine patrol groups."
+    },
+    {
+      "category": "NXPD Enlisted",
+      "tier": 3,
+      "name": "ASI - Assistant Sub-Inspector",
+      "desc": "Senior patrol officer and mentor for the enlisted division."
+    },
+    {
+      "category": "NXPD Enlisted",
+      "tier": 3,
+      "name": "HC - Head Constable",
+      "desc": "Veteran patrolman and field lead for frontline response units."
+    },
+    {
+      "category": "NXPD Enlisted",
+      "tier": 3,
+      "name": "CONS - Constable",
+      "desc": "Frontline patrol responder. Fully certified law enforcement officer."
+    },
+    {
+      "category": "NXPD Enlisted",
+      "tier": 3,
+      "name": "TR - Trainee",
+      "desc": "Cadet undergoing 3-day observation and field evaluation Phase."
     }
   ],
   "codes": [
     {
+      "code": "10-2",
+      "meaning": "Arrived on Scene"
+    },
+    {
       "code": "10-4",
-      "meaning": "Message Received / Understood"
+      "meaning": "Copy That"
+    },
+    {
+      "code": "10-5",
+      "meaning": "Short Break"
+    },
+    {
+      "code": "10-6",
+      "meaning": "Back from Break"
+    },
+    {
+      "code": "10-7",
+      "meaning": "Off Duty"
+    },
+    {
+      "code": "10-8",
+      "meaning": "On Duty"
+    },
+    {
+      "code": "10-9",
+      "meaning": "Repeat Message"
+    },
+    {
+      "code": "10-10",
+      "meaning": "Fight in Progress"
     },
     {
       "code": "10-20",
       "meaning": "Current Location"
     },
     {
+      "code": "10-21",
+      "meaning": "Call by Phone"
+    },
+    {
+      "code": "10-30",
+      "meaning": "Terrorist Attack"
+    },
+    {
       "code": "10-31",
-      "meaning": "Crime in Progress"
+      "meaning": "Car Hijacking"
+    },
+    {
+      "code": "10-32",
+      "meaning": "Shots Fired / Armed"
     },
     {
       "code": "10-33",
-      "meaning": "Emergency - Clear Radio Channels"
+      "meaning": "Medical Emergency"
     },
     {
-      "code": "10-80",
-      "meaning": "Vehicle Pursuit in Progress"
+      "code": "10-34",
+      "meaning": "On Traffic Stop"
     },
     {
-      "code": "10-99",
-      "meaning": "Officer Down - Lethal Force Authorized"
+      "code": "10-40",
+      "meaning": "In Chase / Pursuit"
+    },
+    {
+      "code": "10-50",
+      "meaning": "Backup Requested"
+    },
+    {
+      "code": "10-65",
+      "meaning": "Missing Person"
+    },
+    {
+      "code": "10-66",
+      "meaning": "Suspicious Person"
+    },
+    {
+      "code": "10-74",
+      "meaning": "Negative"
+    },
+    {
+      "code": "10-80:V",
+      "meaning": "Vehicle Pursuit"
+    },
+    {
+      "code": "10-80:F",
+      "meaning": "Foot Pursuit"
+    },
+    {
+      "code": "10-90",
+      "meaning": "Robbery"
+    },
+    {
+      "code": "10-100",
+      "meaning": "Situation Clear"
     }
-  ],
-  "overview_stats": [
-    { "label": "PATROL COVERAGE", "value": 94, "suffix": "%" },
-    { "label": "FORCE DEPLOYMENT", "value": 78, "suffix": "%" },
-    { "label": "INTERCEPT CAPACITY", "value": 82, "suffix": "%" }
-  ],
-  "assets_list": [
-    { "name": "Vapid Interceptor", "type": "PATROL CRUISER", "status": "ACTIVE" },
-    { "name": "Bravado Buffalo SXT", "type": "HIGH SPEED UNIT", "status": "ACTIVE" },
-    { "name": "Annihilator Stealth", "type": "AERIAL TACTICAL", "status": "STANDBY" },
-    { "name": "RCV Riot Control", "type": "HEAVY ARMORED", "status": "STANDBY" }
   ],
   "assets": {
     "bg": "/Assets/VJ/BG-vj.png",
