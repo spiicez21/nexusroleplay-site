@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import footerData from '../../data/footer.json'
 import './Footer.css'
 
@@ -66,6 +67,16 @@ export default function Footer() {
               <span className="site-footer__col-title glusp">{col.title}</span>
               {col.links.map((link, j) => {
                 const isExternal = link.url.startsWith('http')
+                const isInternalRoute = link.url.startsWith('/')
+                
+                if (isInternalRoute) {
+                  return (
+                    <Link key={j} to={link.url} className="site-footer__link fw-300">
+                      {link.label}
+                    </Link>
+                  )
+                }
+
                 return (
                   <a 
                     key={j} 

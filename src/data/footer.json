@@ -23,9 +23,8 @@
     {
       "title": "LEGAL",
       "links": [
-        { "label": "Terms of Service", "url": "#" },
-        { "label": "Privacy Policy", "url": "#" },
-        { "label": "Store Terms", "url": "#" }
+        { "label": "Terms of Service", "url": "/tos" },
+        { "label": "Privacy Policy", "url": "/privacy" }
       ]
     }
   ],

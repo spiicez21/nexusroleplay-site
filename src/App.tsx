@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -14,16 +15,43 @@ import Society from './components/sections/Society'
 import Join from './components/sections/Join'
 import Footer from './components/sections/Footer'
 
+import LegalPage from './components/pages/LegalPage'
+
 import './App.css'
 import './index.css'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
+
+function Home() {
+  return (
+    <main>
+      <Hero />
+      <Connect />
+      <Manifesto />
+      <Architecture />
+      <Gallery />
+      <Society />
+      <Join />
+    </main>
+  )
+}
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true)
   const appRef      = useRef<HTMLDivElement>(null)
   const dotRef      = useRef<HTMLDivElement>(null)
   const followerRef = useRef<HTMLDivElement>(null)
+  
+  const location = useLocation()
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    // Refresh ScrollTrigger to ensure triggers measure exactly correctly on Mount
+    setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 100)
+  }, [location.pathname])
 
   /* ── Custom cursor ── */
   useGSAP(() => {
@@ -44,10 +72,16 @@ export default function App() {
     const onLeave = () => gsap.to(followerRef.current, { scale: 1,   duration: 0.3 })
 
     window.addEventListener('mousemove', onMove)
-    document.querySelectorAll('a, button, .gallery__item').forEach(el => {
-      el.addEventListener('mouseenter', onEnter)
-      el.addEventListener('mouseleave', onLeave)
-    })
+    
+    // Bind cursor to new elements when route finishes loading or changes
+    const bindCursorHover = () => {
+      document.querySelectorAll('a, button, .gallery__item').forEach(el => {
+        el.addEventListener('mouseenter', onEnter)
+        el.addEventListener('mouseleave', onLeave)
+      })
+    }
+    
+    bindCursorHover()
 
     return () => {
       window.removeEventListener('mousemove', onMove)
@@ -56,11 +90,14 @@ export default function App() {
         el.removeEventListener('mouseleave', onLeave)
       })
     }
-  }, { scope: appRef, dependencies: [isLoading] })
+  }, { scope: appRef, dependencies: [isLoading, location.pathname] })
 
   /* ── Scroll animations ── */
   useGSAP(() => {
     if (isLoading) return
+
+    // Clear previous triggers if we change pages
+    ScrollTrigger.getAll().forEach(t => t.kill())
 
     // Fade-up text elements
     gsap.utils.toArray<Element>('.fade-up').forEach(el => {
@@ -113,7 +150,7 @@ export default function App() {
         }
       )
     })
-  }, { scope: appRef, dependencies: [isLoading] })
+  }, { scope: appRef, dependencies: [isLoading, location.pathname] })
 
   return (
     <div ref={appRef} className="app-container">
@@ -125,15 +162,11 @@ export default function App() {
 
       <Navbar />
 
-      <main>
-        <Hero />
-        <Connect />
-        <Manifesto />
-        <Architecture />
-        <Gallery />
-        <Society />
-        <Join />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tos" element={<LegalPage type="tos" />} />
+        <Route path="/privacy" element={<LegalPage type="privacy" />} />
+      </Routes>
 
       <Footer />
     </div>
