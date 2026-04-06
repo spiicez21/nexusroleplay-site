@@ -1,0 +1,31 @@
+{
+  "id": "logistics",
+  "name": "Logistics",
+  "type": "BUSINESS OF NEXUS",
+  "mission": "The backbone of delivery and supply chains across the state.",
+  "vision": "Ensuring that every player-owned business has access to physical goods imported from out of state.",
+  "rules": {
+    "basic": [
+      "Deliveries must be completed in a timely manner.",
+      "Truck drivers must obey all traffic laws given their heavy load."
+    ],
+    "advanced": [
+      "High-value transports require an escort from security or N.X.P.D.",
+      "Logistics companies can bid on state contracts."
+    ]
+  },
+  "roles": [
+    {
+      "name": "GoPostal",
+      "desc": "Standard package delivery."
+    },
+    {
+      "name": "Heavy Freight",
+      "desc": "Class A trucking for business restocks."
+    }
+  ],
+  "assets": {
+    "bg": "/Assets/KM/BG-km.png",
+    "theme": "#cccccc"
+  }
+}

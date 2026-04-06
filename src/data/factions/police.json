@@ -1,0 +1,67 @@
+{
+  "id": "police",
+  "name": "N.X.P.D. (Police)",
+  "type": "GOVERNMENT JOB",
+  "mission": "To enforce the law, maintain order, and protect the citizens of Nexus City through unwavering dedication and tactical superiority.",
+  "vision": "A self-sustaining judicial ecosystem where crime is met with calculated, overwhelming force, and justice is swiftly delivered.",
+  "rules": {
+    "basic": [
+      "Always respect the chain of command.",
+      "Lethal force is authorized only when civilian lives are in imminent danger.",
+      "Bodycams must remain active during all active pursuits and engagements."
+    ],
+    "advanced": [
+      "High-speed pursuits require clear communication and must not endanger populated zones.",
+      "All seized narcotics and weapons must be rigorously documented in the evidence locker.",
+      "Interrogations require at least two officers present at all times."
+    ]
+  },
+  "roles": [
+    {
+      "name": "Chief of Police",
+      "desc": "Oversees the entire department and judicial relations."
+    },
+    {
+      "name": "S.W.A.T. Operator",
+      "desc": "Specialized tactical unit for hostage and terrorism situations."
+    },
+    {
+      "name": "Detective",
+      "desc": "Handles plain-clothes investigations strings and syndicate tracking."
+    },
+    {
+      "name": "Patrol Officer",
+      "desc": "The backbone of city law enforcement."
+    }
+  ],
+  "codes": [
+    {
+      "code": "10-4",
+      "meaning": "Message Received / Understood"
+    },
+    {
+      "code": "10-20",
+      "meaning": "Current Location"
+    },
+    {
+      "code": "10-31",
+      "meaning": "Crime in Progress"
+    },
+    {
+      "code": "10-33",
+      "meaning": "Emergency - Clear Radio Channels"
+    },
+    {
+      "code": "10-80",
+      "meaning": "Vehicle Pursuit in Progress"
+    },
+    {
+      "code": "10-99",
+      "meaning": "Officer Down - Lethal Force Authorized"
+    }
+  ],
+  "assets": {
+    "bg": "/Assets/VJ/BG-vj.png",
+    "theme": "var(--c-red)"
+  }
+}

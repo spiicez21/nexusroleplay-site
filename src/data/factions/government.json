@@ -1,0 +1,29 @@
+{
+  "id": "government",
+  "name": "Nexus Government",
+  "type": "NEXUS GOVERNMENT",
+  "mission": "To oversee the legal, financial, and structural framework of Nexus City.",
+  "vision": "A dynamic leadership system that relies on player voting and policy enactment to shape the world.",
+  "rules": {
+    "basic": [
+      "All government decisions must be documented publicly.",
+      "No direct interference in ongoing judicial cases unless constitutional issues arise.",
+      "Elections are held dynamically; term limits must be respected."
+    ],
+    "advanced": [
+      "Taxation adjustments must be passed through a general assembly vote.",
+      "The defense minister operates the state military and martial law contingencies.",
+      "Corruption RP is permitted but requires immense trace-evidence leading."
+    ]
+  },
+  "roles": [
+    { "name": "President", "desc": "Leading the visionary future of Nexus City." },
+    { "name": "Defense Minister", "desc": "Ensuring the safety and security of all citizens via state militia." },
+    { "name": "Health Minister", "desc": "Managing city-wide medical infrastructure and budgets." },
+    { "name": "Finance & Business Welfare Minister", "desc": "Driving the economic powerhouse of Nexus." }
+  ],
+  "assets": {
+    "bg": "/Assets/AJ/BG-aj.png",
+    "theme": "var(--c-text)"
+  }
+}

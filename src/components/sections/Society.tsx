@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import societyData from '../../data/society.json'
 import './Society.css'
 
@@ -33,14 +34,15 @@ export default function Society() {
                   {cat.title}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.6rem' }}>
-                  {cat.items.map((item, j) => (
-                    <div key={j} className="society__desc fw-300" style={{ 
+                  {cat.items.map((item: any, j: number) => (
+                    <Link key={j} to={item.href} className="society__desc fw-300 society__job-link" style={{ 
                       display: 'flex', alignItems: 'center', gap: '0.5rem',
                       background: 'rgba(255,255,255,0.03)', padding: '0.4rem 0.8rem',
-                      borderLeft: '2px solid rgba(255,255,255,0.1)', color: 'var(--c-text)'
+                      borderLeft: '2px solid rgba(255,255,255,0.1)', color: 'var(--c-text)',
+                      textDecoration: 'none', transition: 'background 0.2s, transform 0.2s'
                     }}>
-                      <span style={{ fontSize: '0.7rem', opacity: 0.5, color: 'var(--c-red)' }}>//</span> {item}
-                    </div>
+                      <span style={{ fontSize: '0.7rem', opacity: 0.5, color: 'var(--c-red)' }}>//</span> {item.name}
+                    </Link>
                   ))}
                 </div>
               </div>

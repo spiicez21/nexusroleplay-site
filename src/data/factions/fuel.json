@@ -1,0 +1,24 @@
+{
+  "id": "fuel",
+  "name": "Fuel Stations",
+  "type": "BUSINESS OF NEXUS",
+  "mission": "Providing the necessary fuel to keep the city's infrastructure moving.",
+  "vision": "A privatized fueling system where owners control the price of gas per gallon based on oil imports.",
+  "rules": {
+    "basic": [
+      "Prices cannot exceed state-mandated maximums.",
+      "Fuel stations must be actively restocked via tanker jobs."
+    ],
+    "advanced": [
+      "Station vaults can be robbed; hire security if necessary."
+    ]
+  },
+  "roles": [
+    { "name": "Station Owner", "desc": "Manages gas prices and employee wages." },
+    { "name": "Cashier", "desc": "Handles counter transactions and snacks." }
+  ],
+  "assets": {
+    "bg": "/Assets/VJ/BG-vj.png",
+    "theme": "#4caf50"
+  }
+}

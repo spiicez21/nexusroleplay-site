@@ -1,0 +1,27 @@
+{
+  "id": "food",
+  "name": "Food Shops",
+  "type": "BUSINESS OF NEXUS",
+  "mission": "Sustaining the city with high-quality culinary experiences.",
+  "vision": "A thriving competitive market of restaurants, food trucks, and premium dining.",
+  "rules": {
+    "basic": [
+      "Restaurants must maintain active stock via delivery jobs.",
+      "Give standard RP for cooking and serving animations."
+    ],
+    "advanced": [
+      "Food poisoning RP can occur if expired items are sold.",
+      "Franchising is allowed given proper city permits."
+    ]
+  },
+  "roles": [
+    { "name": "Restaurant Owner", "desc": "Oversees the menu pricing and ingredient logistics." },
+    { "name": "Head Chef", "desc": "Manages food preparation and quality control." },
+    { "name": "Line Cook", "desc": "Handles the bulk of cooking orders from the front." },
+    { "name": "Cashier / Server", "desc": "Frontline customer service and delivery handler." }
+  ],
+  "assets": {
+    "bg": "/Assets/VK/BG-vk.png",
+    "theme": "#e02020"
+  }
+}

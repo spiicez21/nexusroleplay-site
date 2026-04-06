@@ -2,30 +2,49 @@
   "tag": "03 / SOCIETY",
   "categories": [
     {
-      "title": "NEXUS GOVERNMENT",
-      "items": [
-        "President",
-        "Defense Minister",
-        "Health Minister",
-        "Finance & Business Welfare Minister"
-      ]
-    },
-    {
       "title": "GOVERNMENT JOB",
       "items": [
-        "Police",
-        "Hospital",
-        "Premium Dealership"
+        {
+          "name": "Government",
+          "href": "/faction/government"
+        },
+        {
+          "name": "Police",
+          "href": "/faction/police"
+        },
+        {
+          "name": "Hospital",
+          "href": "/faction/hospital"
+        },
+        {
+          "name": "Premium Dealership",
+          "href": "/faction/dealership"
+        }
       ]
     },
     {
       "title": "BUSINESS OF NEXUS",
       "items": [
-        "Mechanic",
-        "Dealership",
-        "Logistics",
-        "Food shop",
-        "Fuel Station"
+        {
+          "name": "Mechanic",
+          "href": "/faction/mechanic"
+        },
+        {
+          "name": "Dealership",
+          "href": "/faction/dealership"
+        },
+        {
+          "name": "Logistics",
+          "href": "/faction/logistics"
+        },
+        {
+          "name": "Food shop",
+          "href": "/faction/food"
+        },
+        {
+          "name": "Fuel Station",
+          "href": "/faction/fuel"
+        }
       ]
     }
   ],

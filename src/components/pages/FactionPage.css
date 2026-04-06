@@ -1,0 +1,160 @@
+.faction-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--c-bg);
+  position: relative;
+  z-index: 2; /* Over noise */
+}
+
+/* ── Hero ── */
+.faction-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 10vw;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.faction-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.2) saturate(0.5);
+  z-index: 0;
+}
+
+.faction-hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--c-bg) 0%, transparent 60%);
+  z-index: 1;
+}
+
+.faction-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.faction-hero__tag {
+  color: var(--c-muted);
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.faction-hero__title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+.faction-hero__title::after {
+  content: '.';
+  color: var(--theme-color, var(--c-red));
+}
+
+/* ── Content Grid ── */
+.faction-content {
+  padding: 6rem 10vw;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.faction-content__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+
+@media (max-width: 900px) {
+  .faction-content__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.faction__section-title {
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--c-border);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  color: var(--c-text);
+  letter-spacing: 0.05em;
+}
+
+.faction__block {
+  margin-bottom: 2rem;
+}
+
+.faction__block h4 {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--c-text);
+  opacity: 0.9;
+  margin-bottom: 0.8rem;
+}
+
+.faction__block p {
+  color: var(--c-muted);
+  line-height: 1.8;
+}
+
+/* Rules list */
+.faction__rules ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.faction__rules ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: var(--c-muted);
+  line-height: 1.6;
+}
+
+.faction__rules ul li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--c-red);
+  font-family: monospace;
+  font-weight: bold;
+}
+
+/* Roles */
+.faction__roles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faction__role-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--c-border);
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--c-border-r);
+}
+
+/* Codes */
+.faction__codes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.faction__code-item {
+  background: rgba(255,255,255,0.03);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 2px;
+  font-size: 0.9rem;
+}

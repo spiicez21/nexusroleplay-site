@@ -1,0 +1,63 @@
+{
+  "id": "hospital",
+  "name": "NXMD (Hospital)",
+  "type": "GOVERNMENT JOB",
+  "mission": "To preserve life in the face of absolute chaos. Every life is worth attempting to save.",
+  "vision": "To implement world-class medical roleplay utilizing advanced triage mechanics and immersive surgical systems.",
+  "rules": {
+    "basic": [
+      "Neutrality is absolute; paramedics must never involve themselves in turf wars.",
+      "Never deny service based on a citizen's background or criminal record.",
+      "Scene safety first: wait for police clearance on active shootouts."
+    ],
+    "advanced": [
+      "Major trauma requires transport to Pillbox Hill; field revivals are for minor injuries only.",
+      "Detailed medical logs must be kept for all major operations.",
+      "Do not utilize police radios unless declaring a 10-33."
+    ]
+  },
+  "roles": [
+    {
+      "name": "Chief of Medicine",
+      "desc": "Handles all hospital administration and policy."
+    },
+    {
+      "name": "Surgeon",
+      "desc": "Capable of complex operative roleplay for major injuries."
+    },
+    {
+      "name": "EMT Paramedic",
+      "desc": "First responders utilizing mobile triage units."
+    },
+    {
+      "name": "Therapist",
+      "desc": "Dedicated psychological evaluations for high-stress jobs."
+    }
+  ],
+  "codes": [
+    {
+      "code": "10-4",
+      "meaning": "Message Received"
+    },
+    {
+      "code": "10-7",
+      "meaning": "Off Duty"
+    },
+    {
+      "code": "10-8",
+      "meaning": "On Duty / In Service"
+    },
+    {
+      "code": "10-52",
+      "meaning": "Requires Medical Assistance"
+    },
+    {
+      "code": "10-11",
+      "meaning": "Traffic Stop"
+    }
+  ],
+  "assets": {
+    "bg": "/Assets/KM/BG-km.png",
+    "theme": "#00b0f0"
+  }
+}

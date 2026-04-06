@@ -1,0 +1,29 @@
+{
+  "id": "mechanic",
+  "name": "City Mechanics",
+  "type": "BUSINESS OF NEXUS",
+  "mission": "Keeping the city's engine running through expert tuning, repair, and modification.",
+  "vision": "A network of specialized mechanic shops each offering distinct parts, aesthetics, and tuning potentials.",
+  "rules": {
+    "basic": [
+      "Charge standard rates based on the global city economy.",
+      "Tow trucks must not obstruct major thoroughfares.",
+      "Always remain in character when explaining technical vehicle damage."
+    ],
+    "advanced": [
+      "Stance modifications and illegal engine swaps carry legal repercussions.",
+      "Do not 'insta-repair' without sufficient RP backing it.",
+      "Stock inventory must be manually restocked via logistics contracts."
+    ]
+  },
+  "roles": [
+    { "name": "Shop Owner", "desc": "Manages repair rates, custom part orders, and the payroll." },
+    { "name": "Lead Mechanic", "desc": "Expert in engine tuning and complete interior swaps." },
+    { "name": "Bodywork Specialist", "desc": "Handles aesthetic modifications, paints, and stances." },
+    { "name": "Tow Technician", "desc": "City-contracted cleanup of abandoned or damaged vehicles." }
+  ],
+  "assets": {
+    "bg": "/Assets/VJ/BG-vj.png",
+    "theme": "#ff6600"
+  }
+}

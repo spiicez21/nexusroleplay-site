@@ -1,0 +1,29 @@
+{
+  "id": "dealership",
+  "name": "Premium Dealerships",
+  "type": "BUSINESS OF NEXUS",
+  "mission": "Delivering the absolute highest tier of automated and imported vehicles to the citizens of Nexus City.",
+  "vision": "A dynamic vehicle economy where salesmen control stock, pricing, and the narrative of owning a masterpiece.",
+  "rules": {
+    "basic": [
+      "All sales must be thoroughly logged through the finance app.",
+      "Showroom vehicles must be kept in pristine condition.",
+      "Do not abuse test drives for personal transport."
+    ],
+    "advanced": [
+      "Financing options require a background check via the central banking system.",
+      "Vehicle commissions are tracked; undercutting global minimums is a fireable offense.",
+      "The theft of dealership properties falls to personal accountability."
+    ]
+  },
+  "roles": [
+    { "name": "Owner / GM", "desc": "Handles all inventory ordering and showroom management." },
+    { "name": "Sales Manager", "desc": "Oversees the sales team and manages daily quotas." },
+    { "name": "Finance Associate", "desc": "Handles background checks and vehicle financing." },
+    { "name": "Sales Representative", "desc": "The frontline salesman securing commissions." }
+  ],
+  "assets": {
+    "bg": "/Assets/AJ/BG-aj.png",
+    "theme": "#d4af37"
+  }
+}
