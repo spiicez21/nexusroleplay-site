@@ -3,17 +3,31 @@
     "title": "NEXUS CITY",
     "credit": "mode by @spicez21"
   },
-  "socials": [
-    { "name": "GitHub", "url": "https://github.com/spiicez21", "id": "@spiicez21" },
-    { "name": "Discord", "url": "#", "id": "nexus.city" },
-    { "name": "Twitter", "url": "#", "id": "@NexusCityRP" },
-    { "name": "Instagram", "url": "#", "id": "@nexus.rp" }
-  ],
-  "links": [
-    { "label": "Status", "url": "#" },
-    { "label": "Store", "url": "#" },
-    { "label": "Rules", "url": "#" },
-    { "label": "Support", "url": "#" }
+  "columns": [
+    {
+      "title": "GET STARTED",
+      "links": [
+        { "label": "Join Discord", "url": "#" },
+        { "label": "Whitelist App", "url": "#" },
+        { "label": "Server Rules", "url": "#" }
+      ]
+    },
+    {
+      "title": "THE SERVER",
+      "links": [
+        { "label": "Connect", "url": "#" },
+        { "label": "Community", "url": "#" },
+        { "label": "Manifesto", "url": "#" }
+      ]
+    },
+    {
+      "title": "LEGAL",
+      "links": [
+        { "label": "Terms of Service", "url": "#" },
+        { "label": "Privacy Policy", "url": "#" },
+        { "label": "Store Terms", "url": "#" }
+      ]
+    }
   ],
   "copyright": "© 2026 NEXUS CITY ROLEPLAY. ALL RIGHTS RESERVED."
 }
