@@ -17,6 +17,7 @@ import Footer from './components/sections/Footer'
 
 import LegalPage from './components/pages/LegalPage'
 import FactionPage from './components/pages/FactionPage'
+import BusinessPage from './components/pages/BusinessPage'
 
 import './App.css'
 import './index.css'
@@ -168,6 +169,7 @@ export default function App() {
         <Route path="/tos" element={<LegalPage type="tos" />} />
         <Route path="/privacy" element={<LegalPage type="privacy" />} />
         <Route path="/faction/:id" element={<FactionPage />} />
+        <Route path="/business" element={<BusinessPage />} />
       </Routes>
 
       <Footer />

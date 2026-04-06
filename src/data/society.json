@@ -27,23 +27,23 @@
       "items": [
         {
           "name": "Mechanic",
-          "href": "/faction/mechanic"
+          "href": "/business"
         },
         {
           "name": "Dealership",
-          "href": "/faction/dealership"
+          "href": "/business"
         },
         {
           "name": "Logistics",
-          "href": "/faction/logistics"
+          "href": "/business"
         },
         {
           "name": "Food shop",
-          "href": "/faction/food"
+          "href": "/business"
         },
         {
           "name": "Fuel Station",
-          "href": "/faction/fuel"
+          "href": "/business"
         }
       ]
     }
