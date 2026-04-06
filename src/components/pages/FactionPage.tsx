@@ -13,6 +13,7 @@ export default function FactionPage() {
   const { id } = useParams()
   const [data, setData] = useState<any>(null)
   const [activeTab, setActiveTab] = useState('overview')
+  const [expandedRules, setExpandedRules] = useState<number | null>(0)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
   
@@ -24,9 +25,9 @@ export default function FactionPage() {
       setError(false)
       window.scrollTo(0, 0)
       setActiveTab('overview')
+      setExpandedRules(0)
       
       try {
-        // Dynamic import based on ID
         const module = await import(`../../data/factions/${id?.toLowerCase()}.json`)
         setData(module.default)
         setIsLoading(false)
@@ -45,10 +46,8 @@ export default function FactionPage() {
   useGSAP(() => {
     if (isLoading || !data) return
 
-    // Clear previous triggers
     ScrollTrigger.getAll().forEach(t => t.kill())
 
-    // Hero Parallax
     gsap.to('.faction-hero__bg', {
       yPercent: 30,
       ease: 'none',
@@ -60,19 +59,18 @@ export default function FactionPage() {
       }
     })
 
-    // Content reveals
     const elements = gsap.utils.toArray('.fp-reveal')
     elements.forEach((el: any) => {
       gsap.fromTo(el,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          ease: 'power3.out',
+          duration: 0.8,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
-            start: 'top 85%',
+            start: 'top 90%',
             toggleActions: 'play none none none'
           }
         }
@@ -80,7 +78,7 @@ export default function FactionPage() {
     })
 
     ScrollTrigger.refresh()
-  }, { scope: pageRef, dependencies: [isLoading, data, activeTab] })
+  }, { scope: pageRef, dependencies: [isLoading, data, activeTab, expandedRules] })
 
   if (isLoading) {
     return (
@@ -89,7 +87,7 @@ export default function FactionPage() {
         <div className="faction-loading-screen">
           <div className="faction-loader">
             <div className="loader-bar" />
-            <span className="glusp fw-700">ENCRYPTING DATA...</span>
+            <span className="glusp fw-700">INITIALIZING PROTOCOL...</span>
           </div>
         </div>
       </div>
@@ -140,7 +138,7 @@ export default function FactionPage() {
               className={`faction-nav__btn ${activeTab === tab ? 'active' : ''}`} 
               onClick={() => setActiveTab(tab)}
             >
-              {tab === 'roles' ? 'CHAIN OF COMMAND' : tab === 'rules' ? 'PROCEDURE' : 'OVERVIEW'}
+              {tab === 'roles' ? 'CHAIN OF COMMAND' : tab === 'rules' ? 'PROTOCOL' : 'OVERVIEW'}
             </button>
           ))}
           {data.codes && (
@@ -148,7 +146,7 @@ export default function FactionPage() {
               className={`faction-nav__btn ${activeTab === 'codes' ? 'active' : ''}`} 
               onClick={() => setActiveTab('codes')}
             >
-              COMMS
+              TRANSMISSIONS
             </button>
           )}
         </div>
@@ -159,37 +157,17 @@ export default function FactionPage() {
         <div className="faction-content__container" key={activeTab}>
 
           {activeTab === 'overview' && (
-            <div className="overview-bento">
-              <div className="bento-item bento-item--main fp-reveal">
-                <h3 className="glusp fw-700 bento-title">THE DIRECTIVE</h3>
-                <div className="bento-content">
-                  <div className="bento-block">
-                    <h4 className="glusp fw-700">MISSION</h4>
+            <div className="overview-minimal">
+              <div className="tactical-item tactical-item--main fp-reveal">
+                <div className="item-tag glusp fw-700">DIRECTIVE::CORE</div>
+                <div className="tactical-content">
+                  <div className="directive-block">
+                    <span className="protocol-id glusp fw-700">MISSION.SOP</span>
                     <p>{data.mission}</p>
                   </div>
-                  <div className="bento-block">
-                    <h4 className="glusp fw-700">VISION</h4>
+                  <div className="directive-block">
+                    <span className="protocol-id glusp fw-700">VISION.SOP</span>
                     <p>{data.vision}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="bento-item bento-item--side fp-reveal">
-                <div className="stats-header">
-                  <span className="glusp fw-700">SYSTEM STATUS</span>
-                  <div className="status-dot pulse" />
-                </div>
-                <div className="stats-list">
-                  <div className="stat-entry">
-                    <span className="stat-label fw-700">FACTION ID</span>
-                    <span className="stat-value">{data.id?.toUpperCase()}</span>
-                  </div>
-                  <div className="stat-entry">
-                    <span className="stat-label fw-700">CLEARANCE</span>
-                    <span className="stat-value">LEVEL 4</span>
-                  </div>
-                  <div className="stat-entry">
-                    <span className="stat-label fw-700">UPTIME</span>
-                    <span className="stat-value">99.9%</span>
                   </div>
                 </div>
               </div>
@@ -197,33 +175,31 @@ export default function FactionPage() {
           )}
 
           {activeTab === 'roles' && (
-            <div className="roles-layout">
+            <div className="roles-layout-technical">
               <div className="section-header fp-reveal">
-                <h3 className="glusp fw-700 faction__section-title">DIVISION AUTHORITY</h3>
+                <h3 className="glusp fw-700 faction__section-title">AUTHORITY::HIERARCHY</h3>
               </div>
               
-              <div className="roles-categories">
+              <div className="roles-tree">
                 {Array.from(new Set(data.roles.map((r: any) => r.category || 'Department Hierarchy'))).map((cat: any) => (
-                  <div key={cat} className="role-category-group fp-reveal">
-                    <div className="category-header-minimal">
-                      <span className="category-label glusp fw-700">{cat}</span>
-                      <div className="category-line" />
+                  <div key={cat} className="role-tree-section fp-reveal">
+                    <div className="tree-header">
+                      <span className="tree-line" />
+                      <h4 className="glusp fw-700">{cat}</h4>
                     </div>
-                    <div className="roles-matrix">
+                    <div className="tree-items">
                       {data.roles.filter((r: any) => (r.category || 'Department Hierarchy') === cat).map((r: any, i: number) => (
-                        <div 
-                          key={i} 
-                          className={`faction__role-item tier-${r.tier || 3} fp-reveal`}
-                          title={r.desc}
-                        >
-                          <div className="role-item__rank glusp fw-700">
-                            {r.name.split(' (')[1]?.replace(')', '') || `L-${i + 1}`}
+                        <div key={i} className={`tree-item tier-${r.tier || 3}`}>
+                          <div className="tree-item__node">
+                            <span className="node-line" />
+                            <div className="node-content">
+                              <div className="node-rank-code glusp fw-700">{r.name.split(' (')[1]?.replace(')', '') || 'CMD'}</div>
+                              <div className="node-main">
+                                <h5 className="glusp fw-700">{r.name.split(' (')[0]}</h5>
+                                <p className="fw-300">{r.desc}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div className="role-item__content">
-                            <h4 className="glusp fw-700">{r.name.split(' (')[0]}</h4>
-                            <span className="role-item__desc fw-300">{r.desc}</span>
-                          </div>
-                          {r.tier === 1 && <div className="role-item__tier-dot tier-1-glow" />}
                         </div>
                       ))}
                     </div>
@@ -234,25 +210,31 @@ export default function FactionPage() {
           )}
 
           {activeTab === 'rules' && (
-            <div className="rules-layout">
+            <div className="rules-layout-accordion">
               <div className="section-header fp-reveal">
-                <h3 className="glusp fw-700 faction__section-title">STANDARD OPERATING PROCEDURE</h3>
+                <h3 className="glusp fw-700 faction__section-title">PROTOCOL::SOP</h3>
               </div>
-              <div className="rules-grid">
+              <div className="accordion-grid">
                 {data.rules.map((section: any, idx: number) => (
-                  <div key={idx} className={`rules-block ${idx % 2 !== 0 ? 'rules-block--alt' : ''} fp-reveal`}>
-                    <div className="rules-block__header">
-                      <div className="header-icon" />
+                  <div key={idx} className={`accordion-section ${expandedRules === idx ? 'expanded' : ''} fp-reveal`}>
+                    <button 
+                      className="accordion-trigger" 
+                      onClick={() => setExpandedRules(expandedRules === idx ? null : idx)}
+                    >
+                      <span className="protocol-id glusp fw-700">SOP-{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
                       <h4 className="glusp fw-700">{section.title}</h4>
+                      <div className={`accordion-icon ${expandedRules === idx ? 'active' : ''}`} />
+                    </button>
+                    <div className="accordion-content">
+                      <ul className="protocol-list">
+                        {section.points.map((p: string, pIdx: number) => (
+                          <li key={pIdx} className="protocol-point">
+                            <span className="point-id">{pIdx + 1 < 10 ? `0${pIdx + 1}` : pIdx + 1}</span>
+                            <span className="point-text">{p}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="rules-list">
-                      {section.points.map((p: string, pIdx: number) => (
-                        <li key={pIdx}>
-                          <span className="rule-number">{(pIdx + 1).toString().padStart(2, '0')}</span>
-                          {p}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 ))}
               </div>

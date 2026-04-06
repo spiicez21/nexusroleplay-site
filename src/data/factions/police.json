@@ -74,6 +74,17 @@
       "meaning": "Officer Down - Lethal Force Authorized"
     }
   ],
+  "overview_stats": [
+    { "label": "PATROL COVERAGE", "value": 94, "suffix": "%" },
+    { "label": "FORCE DEPLOYMENT", "value": 78, "suffix": "%" },
+    { "label": "INTERCEPT CAPACITY", "value": 82, "suffix": "%" }
+  ],
+  "assets_list": [
+    { "name": "Vapid Interceptor", "type": "PATROL CRUISER", "status": "ACTIVE" },
+    { "name": "Bravado Buffalo SXT", "type": "HIGH SPEED UNIT", "status": "ACTIVE" },
+    { "name": "Annihilator Stealth", "type": "AERIAL TACTICAL", "status": "STANDBY" },
+    { "name": "RCV Riot Control", "type": "HEAVY ARMORED", "status": "STANDBY" }
+  ],
   "assets": {
     "bg": "/Assets/VJ/BG-vj.png",
     "theme": "var(--c-red)"

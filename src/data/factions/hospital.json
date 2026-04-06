@@ -261,6 +261,17 @@
       "meaning": "Situation resolved"
     }
   ],
+  "overview_stats": [
+    { "label": "BED CAPACITY", "value": 85, "suffix": "%" },
+    { "label": "ACTIVE SECTORS", "value": 12, "suffix": "/15" },
+    { "label": "FLEET READINESS", "value": 92, "suffix": "%" }
+  ],
+  "assets_list": [
+    { "name": "Rapid Response Unit (RRU)", "type": "MEDICAL SUV", "status": "ACTIVE" },
+    { "name": "Basic Life Support (BLS)", "type": "AMBULANCE", "status": "STANDBY" },
+    { "name": "Advanced Life Support (ALS)", "type": "AMBULANCE", "status": "ACTIVE" },
+    { "name": "Crisis-1 MedEvac", "type": "HELICOPTER", "status": "REPAIR" }
+  ],
   "assets": {
     "bg": "/Assets/KM/BG-km.png",
     "theme": "#00b0f0"
