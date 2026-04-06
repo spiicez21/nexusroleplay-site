@@ -64,11 +64,20 @@ export default function Footer() {
           {footerData.columns.map((col, i) => (
             <div className="site-footer__nav-col fade-up" key={i}>
               <span className="site-footer__col-title glusp">{col.title}</span>
-              {col.links.map((link, j) => (
-                <a key={j} href={link.url} className="site-footer__link fw-300">
-                  {link.label}
-                </a>
-              ))}
+              {col.links.map((link, j) => {
+                const isExternal = link.url.startsWith('http')
+                return (
+                  <a 
+                    key={j} 
+                    href={link.url} 
+                    className="site-footer__link fw-300"
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noopener noreferrer' : undefined}
+                  >
+                    {link.label}
+                  </a>
+                )
+              })}
             </div>
           ))}
 

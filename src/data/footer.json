@@ -7,17 +7,17 @@
     {
       "title": "GET STARTED",
       "links": [
-        { "label": "Join Discord", "url": "#" },
-        { "label": "Whitelist App", "url": "#" },
-        { "label": "Server Rules", "url": "#" }
+        { "label": "Join Discord", "url": "https://discord.gg/nexuscity" },
+        { "label": "Whitelist App", "url": "https://discord.gg/nexuscity" },
+        { "label": "Server Rules", "url": "https://discord.gg/nexuscity" }
       ]
     },
     {
       "title": "THE SERVER",
       "links": [
-        { "label": "Connect", "url": "#" },
-        { "label": "Community", "url": "#" },
-        { "label": "Manifesto", "url": "#" }
+        { "label": "Connect", "url": "#join" },
+        { "label": "Community", "url": "#society" },
+        { "label": "Manifesto", "url": "#manifesto" }
       ]
     },
     {
