@@ -38,27 +38,30 @@
   z-index: 1;
 }
 
-/* ── Character at LEFT edge ── */
+/* ── Character: left zone, inner edge touches text ── */
 .join__character {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 100%;
-  width: auto;
+  height: 108%;
+  width: 70%;
   object-fit: contain;
-  object-position: bottom left;
+  object-position: bottom right; /* anchors inner body toward text */
   z-index: 2;
   pointer-events: none;
   mask-image: linear-gradient(
-    to right,
-    rgba(0,0,0,1) 55%,
+    to left,
+    rgba(0,0,0,1) 82%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
-    to right,
-    rgba(0,0,0,1) 55%,
+    to left,
+    rgba(0,0,0,1) 82%,
     transparent 100%
   );
+  animation: gta-idle 6.2s ease-in-out infinite;
+  animation-delay: 1.2s;
+  transform-origin: bottom center;
 }
 
 /* ── Content anchored to the right ── */

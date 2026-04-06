@@ -36,27 +36,30 @@
   z-index: 1;
 }
 
-/* ── Character at RIGHT edge ── */
+/* ── Character: right zone, inner edge touches text ── */
 .society__character {
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 100%;
-  width: auto;
+  height: 108%;
+  width: 70%;
   object-fit: contain;
-  object-position: bottom right;
+  object-position: bottom left; /* anchors inner body toward text */
   z-index: 2;
   pointer-events: none;
   mask-image: linear-gradient(
-    to left,
-    rgba(0,0,0,1) 55%,
+    to right,
+    rgba(0,0,0,1) 82%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
-    to left,
-    rgba(0,0,0,1) 55%,
+    to right,
+    rgba(0,0,0,1) 82%,
     transparent 100%
   );
+  animation: gta-idle 5.8s ease-in-out infinite;
+  animation-delay: 1.5s;
+  transform-origin: bottom center;
 }
 
 /* ── Content anchored to the left ── */
