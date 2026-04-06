@@ -10,8 +10,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(to bottom, rgba(7, 5, 7, 0.92) 0%, transparent 100%);
   backdrop-filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .nav-logo {
@@ -22,6 +30,8 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  position: relative;
+  z-index: 1010;
 }
 
 .nav-logo img {
