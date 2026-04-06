@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-logo glusp fw-700">
-        <img src="/Logo/Logo.png" alt="Nexus" />
+        <img src="/Logo/logo.svg" alt="Nexus City Logo" className="logo-svg" style={{ height: '32px', width: 'auto'}} />
         NEXUS
       </div>
 

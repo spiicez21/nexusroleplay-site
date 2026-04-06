@@ -1,76 +1,74 @@
 /* ============================================
-   Footer.css — Landscape & Multi-Column
+   Footer.css — Full Background Image Overlay
    ============================================ */
 
-.footer {
+.site-footer {
   position: relative;
   width: 100%;
-  /* Deep thematic gradient. Adjusting from green to Nexus dark reds */
-  background: linear-gradient(180deg, #18090b 0%, #0a0405 100%);
-  color: #fff;
-  border-top: 1px solid var(--c-border);
-  overflow: hidden;
-  padding-bottom: 2rem;
-}
-
-/* ── Landscape Background ── */
-.footer__landscape {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Use the specified city image */
+  
+  /* The skyline transparent image as the entire background */
   background-image: url('/Assets/Footer/footer-city.png');
-  background-size: cover;
-  background-position: center bottom;
+  background-size: cover; 
+  background-position: top center;
   background-repeat: no-repeat;
-  /* Blend it in so it's a moody silhouette */
-  opacity: 0.15;
-  mix-blend-mode: luminosity;
-  pointer-events: none;
-  z-index: 1;
+  
+  /* OVERLAP: Pull the footer UP over the previous section so the skyline pops out */
+  margin-top: -15vw; 
+  
+  /* PUSH down dramatically so everything lands securely inside the dark blank space strictly *below* the buildings */
+  padding-top: clamp(350px, 45vw, 800px); 
+  
+  /* Extend the bottom breathing room as requested */
+  padding-bottom: 12rem;
+  
+  /* Removed background color, relying strictly on the PNG */
+  
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through transparent sky if they click up high */
 }
 
-.footer__inner {
+.site-footer__content {
   position: relative;
   z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem 3rem 0rem;
   display: flex;
   flex-direction: column;
+  gap: 6rem; /* Neat spacing between CTA and Footer Links */
+  pointer-events: all; /* Re-enable for the content */
 }
 
-/* ── Top Section: CTA + Buttons ── */
-.footer__cta-row {
+/* ── Top CTA Row ── */
+.site-footer__cta-row {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 25vh; /* Push columns down to let the landscape breathe */
 }
 
-.footer__cta-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+.site-footer__cta-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -0.02em;
+  color: #fff;
 }
 
-.footer__cta-title span {
+.site-footer__cta-title span {
   display: block;
-  opacity: 0.5;
+  opacity: 0.8;
   font-weight: 300;
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
 }
 
-.footer__cta-actions {
+.site-footer__cta-actions {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
   align-items: center;
 }
 
-.footer__btn-ghost, .footer__btn-primary {
+.btn-ghost, .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -82,61 +80,69 @@
   text-decoration: none;
   cursor: none;
   transition: all 0.2s ease;
-  border-radius: 4px; /* Slightly softer corners for this button style */
+  border-radius: 4px;
 }
 
-.footer__btn-ghost {
+.btn-ghost {
   color: #fff;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.footer__btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.4);
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
-.footer__btn-primary {
+.btn-primary {
   background: #fff;
   color: #000;
   border: 1px solid #fff;
 }
 
-.footer__btn-primary:hover {
+.btn-primary:hover {
   background: #f0f0f0;
   transform: translateY(-2px);
 }
 
-/* ── Bottom Section: Columns ── */
-.footer__columns {
+/* ── Bottom Columns Area ── */
+.site-footer__columns-wrapper {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+.site-footer__columns {
   display: grid;
   grid-template-columns: 1fr repeat(3, auto);
   gap: 4rem;
-  padding-bottom: 4rem;
 }
 
 /* Column 1: Brand */
-.footer__brand-col {
+.site-footer__brand-col {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.footer__brand-logo {
+.site-footer__brand-logo {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: #fff;
 }
 
-.footer__brand-logo svg {
+.site-footer__brand-logo svg {
   width: 24px;
   height: 24px;
 }
 
-.footer__lang {
+.site-footer__lang {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -146,33 +152,34 @@
   cursor: none;
 }
 
-.footer__lang:hover {
+.site-footer__lang:hover {
   color: #fff;
 }
 
-.footer__credit {
+.site-footer__credit {
   margin-top: auto;
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Link Columns */
-.footer__nav-col {
+.site-footer__nav-col {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.footer__col-title {
+.site-footer__col-title {
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 0.5rem;
 }
 
-.footer__link {
+.site-footer__link {
   font-size: 0.85rem;
   font-weight: 500;
   color: #fff;
@@ -182,25 +189,29 @@
   width: fit-content;
 }
 
-.footer__link:hover {
-  color: var(--c-red);
+.site-footer__link:hover {
+  color: rgba(255, 255, 255, 0.6);
   transform: translateX(4px);
 }
 
 @media (max-width: 900px) {
-  .footer__cta-row {
+  .site-footer {
+    padding-top: clamp(200px, 30vw, 400px); 
+  }
+  .site-footer__cta-row {
     flex-direction: column;
     gap: 2rem;
-    margin-bottom: 15vh;
+    padding-bottom: 3rem;
   }
-  .footer__columns {
+  .site-footer__columns {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
   }
 }
 
 @media (max-width: 600px) {
-  .footer__columns {
+  .site-footer__columns {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
