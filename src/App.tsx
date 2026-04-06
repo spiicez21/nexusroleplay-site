@@ -3,12 +3,8 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 
-// Layout Components
 import LoadingScreen from './components/LoadingScreen'
 import Navbar from './components/sections/Navbar'
-import Footer from './components/sections/Footer'
-
-// Section Modules
 import Hero from './components/sections/Hero'
 import Connect from './components/sections/Connect'
 import Manifesto from './components/sections/Manifesto'
@@ -16,91 +12,104 @@ import Architecture from './components/sections/Architecture'
 import Gallery from './components/sections/Gallery'
 import Society from './components/sections/Society'
 import Join from './components/sections/Join'
+import Footer from './components/sections/Footer'
 
 import './App.css'
+import './index.css'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-function App() {
+export default function App() {
   const [isLoading, setIsLoading] = useState(true)
-  const appRef = useRef<HTMLDivElement>(null)
-  const dotRef = useRef<HTMLDivElement>(null)
+  const appRef      = useRef<HTMLDivElement>(null)
+  const dotRef      = useRef<HTMLDivElement>(null)
   const followerRef = useRef<HTMLDivElement>(null)
 
+  /* ── Custom cursor ── */
   useGSAP(() => {
-    // Disable custom cursor on touch devices
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-    if (isTouchDevice) return
+    if ('ontouchstart' in window) return
 
-    // QuickSetters for high performance 
-    const setDotX = gsap.quickSetter(dotRef.current, "x", "px")
-    const setDotY = gsap.quickSetter(dotRef.current, "y", "px")
-    const setFollowerX = gsap.quickSetter(followerRef.current, "x", "px")
-    const setFollowerY = gsap.quickSetter(followerRef.current, "y", "px")
+    const setDotX      = gsap.quickSetter(dotRef.current,      'x', 'px')
+    const setDotY      = gsap.quickSetter(dotRef.current,      'y', 'px')
+    const setFollowerX = gsap.quickSetter(followerRef.current, 'x', 'px')
+    const setFollowerY = gsap.quickSetter(followerRef.current, 'y', 'px')
 
-    const moveCursor = (e: MouseEvent) => {
-      // Physical Dot (0 delay)
-      setDotX(e.clientX)
-      setDotY(e.clientY)
-      
-      // Delay Follower (0.15s delay)
-      gsap.to({}, {
-        duration: 0.15,
-        onUpdate: () => {
-          setFollowerX(e.clientX)
-          setFollowerY(e.clientY)
-        }
-      })
-
-      // Initial Reveal 
+    const onMove = (e: MouseEvent) => {
+      setDotX(e.clientX); setDotY(e.clientY)
+      gsap.to({}, { duration: 0.12, onUpdate: () => { setFollowerX(e.clientX); setFollowerY(e.clientY) } })
       gsap.to([dotRef.current, followerRef.current], { opacity: 1, duration: 0.3 })
     }
 
-    const handleHover = () => {
-      gsap.to(followerRef.current, { scale: 3, backgroundColor: "rgba(230, 34, 34, 0.1)", duration: 0.3 })
-      gsap.to(dotRef.current, { scale: 1.5, duration: 0.3 })
-    }
+    const onEnter = () => gsap.to(followerRef.current, { scale: 2.8, duration: 0.3 })
+    const onLeave = () => gsap.to(followerRef.current, { scale: 1,   duration: 0.3 })
 
-    const handleUnhover = () => {
-      gsap.to(followerRef.current, { scale: 1, backgroundColor: "transparent", duration: 0.3 })
-      gsap.to(dotRef.current, { scale: 1, duration: 0.3 })
-    }
-
-    window.addEventListener("mousemove", moveCursor)
-    
-    // Attach to all interactive elements
-    const interactives = document.querySelectorAll('a, button, .gallery-item, .bento-card')
-    interactives.forEach(el => {
-      el.addEventListener('mouseenter', handleHover)
-      el.addEventListener('mouseleave', handleUnhover)
+    window.addEventListener('mousemove', onMove)
+    document.querySelectorAll('a, button, .gallery__item').forEach(el => {
+      el.addEventListener('mouseenter', onEnter)
+      el.addEventListener('mouseleave', onLeave)
     })
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor)
-      interactives.forEach(el => {
-        el.removeEventListener('mouseenter', handleHover)
-        el.removeEventListener('mouseleave', handleUnhover)
+      window.removeEventListener('mousemove', onMove)
+      document.querySelectorAll('a, button, .gallery__item').forEach(el => {
+        el.removeEventListener('mouseenter', onEnter)
+        el.removeEventListener('mouseleave', onLeave)
       })
     }
   }, { scope: appRef, dependencies: [isLoading] })
 
+  /* ── Scroll animations ── */
   useGSAP(() => {
     if (isLoading) return
 
-    const reveals = gsap.utils.toArray('.reveal-hero, .fade-up')
-    reveals.forEach((el: any) => {
-      gsap.fromTo(el, 
-        { opacity: 0, y: 20 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8, 
-          ease: "power2.out",
+    // Fade-up text elements
+    gsap.utils.toArray<Element>('.fade-up').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.85,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
-            start: "top 95%",
-            toggleActions: "play none none none"
-          }
+            start: 'top 92%',
+            toggleActions: 'play none none none',
+          },
+        }
+      )
+    })
+
+    // Fade-in (no translate)
+    gsap.utils.toArray<Element>('.fade-in').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 95%',
+            toggleActions: 'play none none none',
+          },
+        }
+      )
+    })
+
+    // Character rise — clip-path reveal from bottom
+    gsap.utils.toArray<Element>('.char-rise').forEach(el => {
+      gsap.fromTo(el,
+        { clipPath: 'inset(100% 0 0 0)', opacity: 0 },
+        {
+          clipPath: 'inset(0% 0 0 0)',
+          opacity: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
         }
       )
     })
@@ -108,7 +117,7 @@ function App() {
 
   return (
     <div ref={appRef} className="app-container">
-      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-dot"      ref={dotRef} />
       <div className="cursor-follower" ref={followerRef} />
       <div className="noise" />
 
@@ -130,5 +139,3 @@ function App() {
     </div>
   )
 }
-
-export default App

@@ -1,38 +1,41 @@
-import GTASection from '../GTASection'
 import manifestData from '../../data/manifesto.json'
+import './Manifesto.css'
 
-const Manifesto = () => {
+export default function Manifesto() {
   return (
-    <GTASection 
-      id="about" 
-      bgImage={manifestData.assets.bg} 
-      actorImage={manifestData.assets.actor}
-      loading="eager"
-    >
-      <div className="gta-overlay">
-        <div className="gta-column-left">
-          <div className="manifesto-bg-text glusp">{manifestData.bgText}</div>
-          
-          <section className="manifesto">
-            <div className="manifesto-header fade-up">
-              <span className="section-tag glusp">{manifestData.tag}</span>
-              <div className="data-stamp fw-slim">{manifestData.status}</div>
-            </div>
-            
-            <h2 className="manifesto-title glusp fade-up">
-              <span className="fw-bold">{manifestData.title.white}</span><br/>
-              <span className="red fw-bold">{manifestData.title.red}</span> <span className="fw-bold">{manifestData.title.end}</span>
-            </h2>
+    <section className="manifesto" id="about">
+      {/* BG spans full section */}
+      <div className="manifesto__bg" style={{ backgroundImage: `url("${manifestData.assets.bg}")` }} />
+      <div className="manifesto__gradient" />
 
-            <div className="manifesto-text-block fade-up">
-              <p className="fw-slim">{manifestData.text}</p>
-            </div>
-          </section>
+      {/* Character at left edge */}
+      <img
+        src={manifestData.assets.actor}
+        alt="Nexus Character"
+        className="manifesto__character char-rise"
+        loading="lazy"
+      />
+
+      {/* Text card pushed to the right */}
+      <div className="manifesto__content">
+        <div className="manifesto__card fade-up">
+          <span className="manifesto__tag">{manifestData.tag}</span>
+
+          <h2 className="manifesto__title glusp">
+            <span className="fw-700">{manifestData.title.white}</span>
+            <span className="fw-700" style={{ color: 'var(--c-red)' }}> {manifestData.title.red}</span>
+            <span className="manifesto__title-outline fw-700">{manifestData.title.end}</span>
+          </h2>
+
+          <p className="manifesto__body fw-300">
+            {manifestData.text}
+          </p>
+
+          <div className="manifesto__badge glusp fw-700">
+            {manifestData.status}
+          </div>
         </div>
       </div>
-    </GTASection>
+    </section>
   )
 }
-
-export default Manifesto
-

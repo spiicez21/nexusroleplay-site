@@ -1,0 +1,152 @@
+/* ============================================
+   Society.css
+   Full-width scene: character RIGHT edge
+   Text card floats over BG on the LEFT
+   ============================================ */
+
+.society {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  border-bottom: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+}
+
+.society__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.22) saturate(0.7);
+  transform: scale(1.02);
+}
+
+.society__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--c-bg) 0%,
+    rgba(7, 5, 7, 0.88) 30%,
+    rgba(7, 5, 7, 0.32) 60%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* ── Character at RIGHT edge ── */
+.society__character {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom right;
+  z-index: 2;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to left,
+    rgba(0,0,0,1) 55%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0,0,0,1) 55%,
+    transparent 100%
+  );
+}
+
+/* ── Content anchored to the left ── */
+.society__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(6rem, 12vh, 10rem) clamp(3rem, 8vw, 9rem);
+}
+
+.society__card {
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+}
+
+.society__tag {
+  display: block;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin-bottom: 2rem;
+}
+
+.society__title {
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: clamp(2.5rem, 4vh, 4rem);
+}
+
+.society__title-outline {
+  display: block;
+  -webkit-text-stroke: 2px rgba(237, 231, 236, 0.22);
+  color: transparent;
+}
+
+.society__list { width: 100%; }
+
+.society__item {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 1.2rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  align-items: start;
+}
+
+.society__item:last-child { border-bottom: none; }
+
+.society__num {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--c-red);
+  padding-top: 0.2rem;
+}
+
+.society__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+
+.society__desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.72;
+  color: var(--c-muted);
+}
+
+@media (max-width: 860px) {
+  .society__character {
+    opacity: 0.3;
+    height: 70%;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .society__gradient {
+    background: linear-gradient(to bottom, var(--c-bg) 0%, rgba(7,5,7,0.85) 40%, rgba(7,5,7,0.4) 70%, transparent 100%);
+  }
+  .society__content { padding: 5rem 1.8rem; }
+  .society__card { max-width: 100%; }
+}

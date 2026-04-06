@@ -1,55 +1,57 @@
 import footerData from '../../data/footer.json'
+import './Footer.css'
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="footer-big section-padding">
-      <div className="footer-container">
-        {/* Branding & Credit */}
-        <div className="footer-brand-column fade-up">
-          <div className="footer-logo glusp fw-bold">{footerData.branding.title}</div>
-          <div className="footer-credit-line fw-slim">
-            <span className="glusp opacity-30 fs-tiny ls-wide fw-slim">DESIGNED & DEVELOPED BY</span>
-            <span className="glusp red-text fw-bold ls-wider">{footerData.branding.credit.toUpperCase()}</span>
+    <footer className="footer">
+      <div className="footer__inner">
+
+        {/* Brand */}
+        <div className="footer__brand">
+          <div className="footer__wordmark glusp fw-700 fade-up">
+            {footerData.branding.title}
+          </div>
+          <div className="footer__credit">
+            <span className="footer__credit-by">DESIGNED &amp; DEVELOPED BY</span>
+            <span className="footer__credit-name glusp fw-700">
+              {footerData.branding.credit.toUpperCase()}
+            </span>
           </div>
         </div>
 
-        {/* Links Grid */}
-        <div className="footer-grid">
-          <div className="footer-column fade-up">
-            <h4 className="glusp fw-bold">SOCIAL ID'S</h4>
-            <div className="social-list fw-slim">
-              {footerData.socials.map((social, i) => (
-                <a key={i} href={social.url} className="social-item" target="_blank" rel="noreferrer">
-                  <span className="social-name opacity-50">{social.name}</span>
-                  <span className="social-id fw-bold">{social.id}</span>
+        {/* Links */}
+        <div className="footer__grid">
+          <div className="footer__col fade-up">
+            <span className="footer__col-label glusp fw-700">SOCIAL ID&apos;S</span>
+            <div className="footer__social-list">
+              {footerData.socials.map((s, i) => (
+                <a key={i} href={s.url} className="footer__social" target="_blank" rel="noreferrer">
+                  <span className="footer__social-platform">{s.name}</span>
+                  <span className="footer__social-handle fw-600">{s.id}</span>
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="footer-column fade-up">
-            <h4 className="glusp fw-bold">NAVIGATION</h4>
-            <div className="link-list fw-slim">
-              {footerData.links.map((link, i) => (
-                <a key={i} href={link.url} className="footer-link-item">
-                  {link.label}
-                </a>
+          <div className="footer__col fade-up">
+            <span className="footer__col-label glusp fw-700">NAVIGATION</span>
+            <div className="footer__link-list">
+              {footerData.links.map((l, i) => (
+                <a key={i} href={l.url} className="footer__link fw-300">{l.label}</a>
               ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Extreme Bottom */}
-      <div className="footer-bottom-bar fade-up fw-slim">
-        <div className="copyright-text glusp fw-slim">{footerData.copyright}</div>
-        <div className="system-status">
-          <span className="dot pulse-red" />
-          <span className="glusp fw-slim">SYSTEM STABLE /// V2.4.0</span>
+      {/* Bottom bar */}
+      <div className="footer__bottom fade-in">
+        <span className="footer__copyright glusp fw-600">{footerData.copyright}</span>
+        <div className="footer__system-status glusp fw-600">
+          <span className="footer__status-dot" />
+          SYSTEM STABLE — V2.4.0
         </div>
       </div>
     </footer>
   )
 }
-
-export default Footer

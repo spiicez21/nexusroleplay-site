@@ -1,55 +1,49 @@
-import GTASection from '../GTASection'
 import heroData from '../../data/hero.json'
-import Button from '../ui/Button'
-import StatusIndicator from '../ui/StatusIndicator'
+import './Hero.css'
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <GTASection 
-      id="hero" 
-      bgImage={heroData.assets.bg} 
-      actorImage={heroData.assets.actor}
-      loading="eager"
-    >
-      <div className="gta-overlay">
-        <div className="gta-column-left reveal-hero">
-          <header className="hero-content">
-            <StatusIndicator label="SYSTEM ONLINE | CA-01" className="fade-up" />
-            
-            <h1 className="hero-title glusp fade-up">
-              <span className="fw-bold">{heroData.title.main}</span><br/>
-              <span className="outline fw-bold">{heroData.title.outline}</span>
-            </h1>
+    <section className="hero" id="hero">
+      {/* BG spans full section */}
+      <div className="hero__bg" style={{ backgroundImage: `url("${heroData.assets.bg}")` }} />
+      <div className="hero__gradient" />
 
-            <div className="hero-description-block fade-up">
-              <p className="hero-subtitle fw-slim">
-                {heroData.subtitle}
-              </p>
-              
-              <div className="hero-actions">
-                {heroData.actions.map((action, i) => (
-                  <Button 
-                    key={i} 
-                    href={action.href} 
-                    variant={action.primary ? 'primary' : 'ghost'}
-                    size="large"
-                  >
-                    {action.label}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </header>
-        </div>
-        
-        <div className="hero-scroll-indicator fw-slim fade-in">
-          <span>SCROLL TO EXPLORE</span>
-          <div className="scroll-line" />
+      {/* Character at right edge */}
+      <img
+        src={heroData.assets.actor}
+        alt="Nexus City Character"
+        className="hero__character char-rise"
+        loading="eager"
+      />
+
+      {/* Text card over the left of the scene */}
+      <div className="hero__content">
+        <div className="hero__card">
+          <div className="hero__status fade-in">
+            <span className="hero__status-dot" />
+            SYSTEM ONLINE — CA-01
+          </div>
+
+          <h1 className="hero__title glusp fade-up">
+            <span className="fw-700">{heroData.title.main}</span>
+            <span className="hero__title-outline fw-700">{heroData.title.outline}</span>
+          </h1>
+
+          <p className="hero__sub fw-300 fade-up">
+            {heroData.subtitle}
+          </p>
+
+          <div className="hero__actions fade-up">
+            <a href="#join"  className="btn-primary glusp fw-700">ENTER CITY</a>
+            <a href="#about" className="btn-ghost   glusp fw-700">THE VISION</a>
+          </div>
+
+          <div className="hero__scroll fade-in">
+            <div className="hero__scroll-line" />
+            SCROLL
+          </div>
         </div>
       </div>
-    </GTASection>
+    </section>
   )
 }
-
-export default Hero
-

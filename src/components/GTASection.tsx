@@ -76,17 +76,22 @@ export default function GTASection({ children, bgImage, actorImage, id, classNam
         style={{ backgroundImage: `url("${bgImage}")` }} 
       />
       
+      {/* Editorial Mask */}
+      <div className="gta-bg-mask" />
+      
       {/* Actor layer */}
       <img 
         ref={actorRef} 
         src={actorImage} 
         alt="Actor" 
-        className="gta-actor" 
+        className="gta-actor-professional" 
         loading={loading}
       />
 
-      {/* Overlay Content */}
-      {children}
+      {/* Isolation Wrapper */}
+      <div className="content-isolation">
+        {children}
+      </div>
     </section>
   );
 }

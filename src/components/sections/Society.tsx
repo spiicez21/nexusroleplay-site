@@ -1,32 +1,44 @@
-import GTASection from '../GTASection'
 import societyData from '../../data/society.json'
+import './Society.css'
 
-const Society = () => {
+export default function Society() {
   return (
-    <GTASection 
-      id="society" 
-      bgImage={societyData.assets.bg} 
-      actorImage={societyData.assets.actor}
-      loading="eager"
-    >
-      <div className="gta-overlay">
-        <div className="gta-column-left">
-          <section className="factions">
-            <span className="section-tag glusp fade-up" style={{ marginBottom: '2.5rem' }}>{societyData.tag}</span>
-            <div className="faction-list">
-              {societyData.factions.map((f, i) => (
-                <div key={i} className="faction-item fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
-                  <span className="f-num glusp fw-slim">{f.num} / FACTION</span>
-                  <span className="f-name glusp fw-bold">{f.name}</span>
-                  <p className="f-desc fw-slim">{f.desc}</p>
+    <section className="society" id="society">
+      {/* BG spans full section */}
+      <div className="society__bg" style={{ backgroundImage: `url("${societyData.assets.bg}")` }} />
+      <div className="society__gradient" />
+
+      {/* Character at right edge */}
+      <img
+        src={societyData.assets.actor}
+        alt="Society Character"
+        className="society__character char-rise"
+        loading="lazy"
+      />
+
+      {/* Text card on the left */}
+      <div className="society__content">
+        <div className="society__card fade-up">
+          <span className="society__tag">{societyData.tag}</span>
+
+          <h2 className="society__title glusp">
+            <span className="fw-700">THE</span>
+            <span className="society__title-outline fw-700">SOCIETY</span>
+          </h2>
+
+          <div className="society__list">
+            {societyData.factions.map((f, i) => (
+              <div key={i} className="society__item fade-up">
+                <span className="society__num">{f.num} /</span>
+                <div>
+                  <div className="society__name glusp fw-700">{f.name}</div>
+                  <div className="society__desc fw-300">{f.desc}</div>
                 </div>
-              ))}
-            </div>
-          </section>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </GTASection>
+    </section>
   )
 }
-
-export default Society

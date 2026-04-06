@@ -1,0 +1,163 @@
+/* ============================================
+   Manifesto.css
+   Full-width scene: character LEFT edge
+   Text card floats over BG on the RIGHT
+   ============================================ */
+
+.manifesto {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  border-bottom: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  background: var(--c-surface); /* slightly different from Hero bg */
+}
+
+.manifesto__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.25) saturate(0.7);
+  transform: scale(1.02);
+}
+
+/* Dark gradient right→transparent (text on right) */
+.manifesto__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    var(--c-surface) 0%,
+    rgba(14, 12, 14, 0.88) 30%,
+    rgba(14, 12, 14, 0.35) 60%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* ── Character at LEFT edge ── */
+.manifesto__character {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom left;
+  z-index: 2;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,1) 55%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,1) 55%,
+    transparent 100%
+  );
+}
+
+/* ── Content anchored to the right ── */
+.manifesto__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(6rem, 12vh, 10rem) clamp(3rem, 8vw, 9rem);
+  display: flex;
+  justify-content: flex-end; /* push card to the right */
+}
+
+.manifesto__card {
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.manifesto__tag {
+  display: block;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin-bottom: 2rem;
+}
+
+.manifesto__title {
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.manifesto__title-outline {
+  display: block;
+  -webkit-text-stroke: 2px rgba(237, 231, 236, 0.22);
+  color: transparent;
+}
+
+.manifesto__body {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--c-muted);
+  max-width: 400px;
+  margin-bottom: 2.5rem;
+}
+
+.manifesto__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--c-border-r);
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  width: fit-content;
+}
+
+.manifesto__badge::before {
+  content: '';
+  display: block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: 0 0 8px var(--c-red);
+  animation: blink 2s infinite;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .manifesto__character {
+    opacity: 0.3;
+    height: 70%;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .manifesto__gradient {
+    background: linear-gradient(
+      to bottom,
+      var(--c-surface) 0%,
+      rgba(14,12,14,0.85) 40%,
+      rgba(14,12,14,0.4) 70%,
+      transparent 100%
+    );
+  }
+  .manifesto__content {
+    padding: 5rem 1.8rem;
+    justify-content: flex-start;
+  }
+  .manifesto__card { max-width: 100%; }
+}

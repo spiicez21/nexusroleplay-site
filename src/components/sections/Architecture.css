@@ -1,0 +1,114 @@
+/* ============================================
+   Architecture.css — Full-width systems grid
+   No character image — pure typographic section
+   ============================================ */
+
+.architecture {
+  background: var(--c-surface);
+  padding: clamp(6rem, 12vh, 11rem) clamp(2.5rem, 8vw, 10rem);
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* Section header row */
+.architecture__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: clamp(3rem, 5vh, 5rem);
+  margin-bottom: clamp(3rem, 5vh, 5rem);
+  border-bottom: 1px solid var(--c-border);
+  gap: 4rem;
+}
+
+.architecture__tag {
+  display: block;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin-bottom: 1.2rem;
+}
+
+.architecture__title {
+  font-size: var(--t-h2);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-top: 1.2rem;
+}
+
+.architecture__title-outline {
+  -webkit-text-stroke: 1px rgba(237, 231, 236, 0.1);
+  color: transparent;
+  display: block;
+}
+
+.architecture__subtitle {
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--c-muted);
+  max-width: 280px;
+  text-align: right;
+}
+
+/* Grid of system cards */
+.architecture__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.architecture__card {
+  padding: clamp(2rem, 3.5vh, 3.5rem) clamp(1.5rem, 2.5vw, 2.5rem);
+  border-right: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  transition: background 0.3s ease;
+}
+
+.architecture__card:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Remove right border on last in row */
+.architecture__card:last-child {
+  border-right: none;
+}
+
+.architecture__card-num {
+  display: block;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--c-red);
+  margin-bottom: var(--gap-md);
+  text-transform: uppercase;
+}
+
+.architecture__card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: var(--gap-sm);
+}
+
+.architecture__card-desc {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.78;
+  color: var(--c-muted);
+}
+
+@media (max-width: 860px) {
+  .architecture__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .architecture__subtitle { text-align: left; }
+  .architecture__grid { grid-template-columns: 1fr; }
+  .architecture__card { border-right: none; }
+}

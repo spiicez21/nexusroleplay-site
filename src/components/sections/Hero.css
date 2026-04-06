@@ -1,0 +1,176 @@
+/* ============================================
+   Hero.css
+   Full-width scene: BG spans width
+   Character anchored RIGHT edge
+   Text card floats over BG on the LEFT
+   ============================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  border-bottom: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+}
+
+/* ── Full-bleed BG image ── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.28) saturate(0.8);
+  transform: scale(1.02);
+  will-change: transform;
+}
+
+/* Dark gradient left→transparent: makes left side readable */
+.hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--c-bg) 0%,
+    rgba(7, 5, 7, 0.88) 30%,
+    rgba(7, 5, 7, 0.35) 60%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* ── Character at RIGHT edge ── */
+.hero__character {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom right;
+  z-index: 2;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to left,
+    rgba(0,0,0,1) 55%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0,0,0,1) 55%,
+    transparent 100%
+  );
+}
+
+/* ── Text card floats over the left of the BG ── */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(8rem, 14vh, 12rem) clamp(3rem, 8vw, 9rem) clamp(5rem, 8vh, 8rem);
+}
+
+.hero__card {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 2.5rem;
+}
+
+.hero__status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+  animation: blink 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.hero__title {
+  font-size: clamp(4.5rem, 10vw, 12rem);
+  font-weight: 700;
+  line-height: 0.87;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.hero__title-outline {
+  display: block;
+  -webkit-text-stroke: 2px rgba(237, 231, 236, 0.25);
+  color: transparent;
+}
+
+.hero__sub {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--c-muted);
+  margin-bottom: clamp(3rem, 5vh, 5rem);
+  max-width: 440px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero__scroll {
+  margin-top: 4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  opacity: 0.45;
+}
+
+.hero__scroll-line {
+  width: 40px; height: 1px;
+  background: linear-gradient(to right, var(--c-red), transparent);
+  animation: scroll-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.3; width: 20px; }
+  50%       { opacity: 1;   width: 44px; }
+}
+
+@media (max-width: 860px) {
+  .hero__character {
+    opacity: 0.35;
+    height: 70%;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .hero__gradient {
+    background: linear-gradient(
+      to bottom,
+      var(--c-bg) 0%,
+      rgba(7,5,7,0.8) 40%,
+      rgba(7,5,7,0.4) 70%,
+      transparent 100%
+    );
+  }
+  .hero__content {
+    padding: 7rem 1.8rem 4rem;
+  }
+}

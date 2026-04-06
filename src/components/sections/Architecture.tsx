@@ -1,35 +1,42 @@
-import GTASection from '../GTASection'
 import archData from '../../data/architecture.json'
-import BentoCard from '../ui/BentoCard'
+import './Architecture.css'
 
-const Architecture = () => {
+const extraCards = [
+  { tag: 'SCRIPTING',   title: 'Lua Core Engine',     desc: 'Optimised Lua execution with zero-latency event handling across all server threads.' },
+  { tag: 'ANTI-CHEAT',  title: 'Neural Shield',        desc: 'Multi-layer detection with real-time behavioural analysis and server-side telemetry.' },
+  { tag: 'BANKING',     title: 'Unified Economy',       desc: 'Full fiscal simulation — taxes, interest rates, market volatility, institutional banking.' },
+  { tag: 'DISPATCH',    title: 'Live Dispatch System',  desc: 'Seamless CAD integration with priority queuing for all emergency units.' },
+]
+
+const all = [...archData.cards, ...extraCards]
+
+export default function Architecture() {
   return (
-    <GTASection 
-      id="systems" 
-      bgImage={archData.assets.bg} 
-      actorImage={archData.assets.actor}
-      loading="eager"
-    >
-      <div className="gta-overlay">
-        <div className="gta-column-left">
-          <section className="bento-section">
-            <span className="section-tag glusp fade-up" style={{ marginBottom: '2.5rem' }}>{archData.tag}</span>
-            <div className="bento-grid">
-              {archData.cards.map((card, i) => (
-                <BentoCard 
-                  key={i} 
-                  tag={card.tag} 
-                  title={card.title} 
-                  desc={card.desc} 
-                  className="fade-up"
-                />
-              ))}
-            </div>
-          </section>
+    <section className="architecture" id="systems">
+      <div className="architecture__header">
+        <div>
+          <span className="architecture__tag fade-up">{archData.tag}</span>
+          <h2 className="architecture__title glusp fade-up">
+            SYSTEM
+            <span className="architecture__title-outline">ARCHITECTURE</span>
+          </h2>
         </div>
+        <p className="architecture__subtitle fw-300 fade-up">
+          Every subsystem purpose-built for high-density city operations at scale.
+        </p>
       </div>
-    </GTASection>
+
+      <div className="architecture__grid">
+        {all.map((c, i) => (
+          <div key={i} className="architecture__card fade-up">
+            <span className="architecture__card-num">
+              {c.tag} / {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 className="architecture__card-title glusp">{c.title}</h3>
+            <p  className="architecture__card-desc fw-300">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
-
-export default Architecture

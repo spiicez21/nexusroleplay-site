@@ -2,88 +2,68 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import galleryData from '../../data/gallery.json'
+import './Gallery.css'
 
-const Gallery = () => {
+export default function Gallery() {
   const trackRef = useRef<HTMLDivElement>(null)
-  const loopRef = useRef<gsap.core.Timeline | null>(null)
+  const tlRef    = useRef<gsap.core.Timeline | null>(null)
 
-  // Infinite Scroll Loop
   useGSAP(() => {
     if (!trackRef.current) return
-
-    const track = trackRef.current
-    
-    loopRef.current = gsap.timeline({
-      repeat: -1,
-      defaults: { ease: "none" }
-    })
-
-    loopRef.current.to(track, {
-      xPercent: -50,
-      duration: 30,
-    })
+    tlRef.current = gsap.timeline({ repeat: -1, defaults: { ease: 'none' } })
+    tlRef.current.to(trackRef.current, { xPercent: -50, duration: 30 })
   }, { scope: trackRef })
 
-  const handleMouseEnter = () => {
-    gsap.to(loopRef.current, { timeScale: 0.2, duration: 1 })
-  }
-
-  const handleMouseLeave = () => {
-    gsap.to(loopRef.current, { timeScale: 1, duration: 1 })
-  }
+  const slowDown = () => gsap.to(tlRef.current, { timeScale: 0.15, duration: 0.8 })
+  const speedUp  = () => gsap.to(tlRef.current, { timeScale: 1,    duration: 0.8 })
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget
-    const rect = card.getBoundingClientRect()
+    const rect = e.currentTarget.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-
-    gsap.to(card.querySelector('img'), {
-      x: x * 50,
-      y: y * 50,
-      duration: 0.6,
-      ease: "power2.out"
-    })
-  }
-
-  const handleItemMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const y = (e.clientY - rect.top)  / rect.height - 0.5
     gsap.to(e.currentTarget.querySelector('img'), {
-      x: 0,
-      y: 0,
-      duration: 0.8,
-      ease: "power3.out"
+      x: x * 35, y: y * 35, duration: 0.55, ease: 'power2.out',
     })
   }
 
-  // Double the items for seamless looping
-  const displayItems = [...galleryData.items, ...galleryData.items]
+  const handleItemLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    gsap.to(e.currentTarget.querySelector('img'), {
+      x: 0, y: 0, duration: 0.7, ease: 'power3.out',
+    })
+  }
+
+  const items = [...galleryData.items, ...galleryData.items]
 
   return (
-    <section className="gallery-section">
-      <div 
-        className="gallery-track" 
+    <section className="gallery">
+      <div className="gallery__header fade-up">
+        <span className="label">GALLERY</span>
+        <h2 className="gallery__title glusp">
+          <span className="fw-700">INSIDE</span>
+          <span className="gallery__title-outline fw-700">THE CITY</span>
+        </h2>
+      </div>
+
+      <div
         ref={trackRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className="gallery__track"
+        onMouseEnter={slowDown}
+        onMouseLeave={speedUp}
       >
-        {displayItems.map((item, i) => (
-          <div 
-            key={i} 
-            className="gallery-item"
+        {items.map((item, i) => (
+          <div
+            key={i}
+            className="gallery__item"
             onMouseMove={handleMouseMove}
-            onMouseLeave={handleItemMouseLeave}
+            onMouseLeave={handleItemLeave}
           >
-            <div className="gallery-img-wrapper">
+            <div className="gallery__img-wrap">
               <img src={`/Assets/Gallery/${item.img}`} alt={item.title} loading="lazy" />
             </div>
-            <div className="gallery-overlay-gradient" />
-            <div className="gallery-label">
-              <div className="g-header">
-                <span className="g-tag">{item.tag}</span>
-                <span className="g-coord">{item.coord}</span>
-              </div>
-              <h4>{item.title}</h4>
-              <div className="g-scan" />
+            <div className="gallery__gradient" />
+            <div className="gallery__label">
+              <span className="gallery__label-tag">{item.tag}</span>
+              <div className="gallery__label-title glusp fw-600">{item.title}</div>
             </div>
           </div>
         ))}
@@ -91,5 +71,3 @@ const Gallery = () => {
     </section>
   )
 }
-
-export default Gallery
