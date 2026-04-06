@@ -35,7 +35,7 @@ export default function Hero() {
 
           <div className="hero__actions fade-up">
             <a href="#join"  className="btn-primary glusp fw-700">ENTER CITY</a>
-            <a href="#about" className="btn-ghost   glusp fw-700">THE VISION</a>
+            <a href="https://www.youtube.com/watch?v=MANRM91OSI4" target="_blank" rel="noreferrer" className="btn-ghost glusp fw-700">WATCH TRAILER</a>
           </div>
 
           <div className="hero__scroll fade-in">
