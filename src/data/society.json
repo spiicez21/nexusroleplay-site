@@ -1,9 +1,33 @@
 {
   "tag": "03 / SOCIETY",
-  "factions": [
-    { "num": "01", "name": "L.S.P.D.", "desc": "Enforce order with military-grade tech and a full judicial back-end." },
-    { "num": "02", "name": "U.M.S.", "desc": "Critical response teams utilizing advanced medical triage systems." },
-    { "num": "03", "name": "Syndicates", "desc": "Organized hierarchies running weapon and narcotic logistics chains." }
+  "categories": [
+    {
+      "title": "NEXUS GOVERNMENT",
+      "items": [
+        "President",
+        "Defense Minister",
+        "Health Minister",
+        "Finance & Business Welfare Minister"
+      ]
+    },
+    {
+      "title": "GOVERNMENT JOB",
+      "items": [
+        "Police",
+        "Hospital",
+        "Premium Dealership"
+      ]
+    },
+    {
+      "title": "BUSINESS OF NEXUS",
+      "items": [
+        "Mechanic",
+        "Dealership",
+        "Logistics",
+        "Food shop",
+        "Fuel Station"
+      ]
+    }
   ],
   "assets": {
     "bg": "/Assets/VJ/BG-vj.png",

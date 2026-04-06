@@ -4,7 +4,7 @@ import ApplyModal from '../ui/ApplyModal'
 import './Join.css'
 
 // Set your Discord invite URL here
-const DISCORD_URL = 'https://discord.gg/nexuscity'
+const DISCORD_URL = 'https://discord.gg/nexusredemption'
 
 const stats = [
   { num: '500+', label: 'Active Members'  },
