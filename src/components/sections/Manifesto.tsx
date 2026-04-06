@@ -23,7 +23,7 @@ export default function Manifesto() {
 
           <h2 className="manifesto__title glusp">
             <span className="fw-700">{manifestData.title.white}</span>
-            <span className="fw-700" style={{ color: 'var(--c-red)' }}> {manifestData.title.red}</span>
+            <span className="fw-700" style={{ color: 'var(--c-red)' }}> {manifestData.title.red} </span>
             <span className="manifesto__title-outline fw-700">{manifestData.title.end}</span>
           </h2>
 
